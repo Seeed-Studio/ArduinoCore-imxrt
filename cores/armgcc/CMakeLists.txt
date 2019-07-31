@@ -1028,6 +1028,9 @@ add_executable(main.elf
 "${ProjDirPath}/../Udp.h"
 "${ProjDirPath}/../USBAPI.h"
 "${ProjDirPath}/../WCharacter.h"
+"${ProjDirPath}/../wiring.c"
+"${ProjDirPath}/../wiring_digital.c"
+"${ProjDirPath}/../hooks.c"
 )
 
 

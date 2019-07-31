@@ -240,7 +240,7 @@ CMAKE_ASM_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ASM_FLAGS_DEBUG
 CMAKE_ASM_FLAGS_DEBUG-ADVANCED:INTERNAL=1
 //asm compiler flags debug
-CMAKE_ASM_FLAGS_DEBUG:INTERNAL= -g -g -g -g -g -g -g -g -g -g
+CMAKE_ASM_FLAGS_DEBUG:INTERNAL= -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g -g
 //ADVANCED property for variable: CMAKE_ASM_FLAGS_FLEXSPI_NOR_DEBUG
 CMAKE_ASM_FLAGS_FLEXSPI_NOR_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ASM_FLAGS_MINSIZEREL
@@ -276,7 +276,7 @@ CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG
 CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1
 //cxx compiler flags debug
-CMAKE_CXX_FLAGS_DEBUG:INTERNAL= -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g
+CMAKE_CXX_FLAGS_DEBUG:INTERNAL= -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_FLEXSPI_NOR_DEBUG
 CMAKE_CXX_FLAGS_FLEXSPI_NOR_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_MINSIZEREL
@@ -284,7 +284,7 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELEASE
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //cxx compiler flags release
-CMAKE_CXX_FLAGS_RELEASE:INTERNAL=' -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3 '
+CMAKE_CXX_FLAGS_RELEASE:INTERNAL=' -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3 '
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
@@ -296,7 +296,7 @@ CMAKE_C_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_DEBUG
 CMAKE_C_FLAGS_DEBUG-ADVANCED:INTERNAL=1
 //c compiler flags debug
-CMAKE_C_FLAGS_DEBUG:INTERNAL= -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g
+CMAKE_C_FLAGS_DEBUG:INTERNAL= -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g -O0 -g
 //ADVANCED property for variable: CMAKE_C_FLAGS_FLEXSPI_NOR_DEBUG
 CMAKE_C_FLAGS_FLEXSPI_NOR_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_MINSIZEREL
@@ -304,7 +304,7 @@ CMAKE_C_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELEASE
 CMAKE_C_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //c compiler flags release
-CMAKE_C_FLAGS_RELEASE:INTERNAL=' -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3 '
+CMAKE_C_FLAGS_RELEASE:INTERNAL=' -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3  -O3 '
 //ADVANCED property for variable: CMAKE_C_FLAGS_RELWITHDEBINFO
 CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //Path to cache edit program executable.

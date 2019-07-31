@@ -338,6 +338,33 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/co
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/clock_config.c.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/clock_config.c.s
 
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.c.s
+
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.cpp.obj
 
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.obj
@@ -364,6 +391,60 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/co
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.cpp.s:
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.cpp.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.cpp.s
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.s
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.s
 
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/xip/evkbimxrt1050_flexspi_nor_config.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/xip/evkbimxrt1050_flexspi_nor_config.c.obj
 
@@ -812,9 +893,18 @@ help:
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/clock_config.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/clock_config.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/clock_config.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/hooks.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/main.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/xip/evkbimxrt1050_flexspi_nor_config.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/xip/evkbimxrt1050_flexspi_nor_config.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/xip/evkbimxrt1050_flexspi_nor_config.s
