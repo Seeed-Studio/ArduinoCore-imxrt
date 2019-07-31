@@ -949,7 +949,7 @@ include_directories(${ProjDirPath}/../../../../../devices/MIMXRT1052/xip)
 include_directories(${ProjDirPath}/../../../xip)
 
 add_executable(main.elf 
-"${ProjDirPath}/../main.c"
+"${ProjDirPath}/../main.cpp"
 "${ProjDirPath}/../board.c"
 "${ProjDirPath}/../board.h"
 "${ProjDirPath}/../clock_config.c"
@@ -1004,6 +1004,30 @@ add_executable(main.elf
 "${ProjDirPath}/../../../../../CMSIS/Include/core_armv8mml.h"
 "${ProjDirPath}/../../../../../CMSIS/Include/mpu_armv7.h"
 "${ProjDirPath}/../../../../../CMSIS/Include/mpu_armv8.h"
+"${ProjDirPath}/../Arduino.h"
+"${ProjDirPath}/../Client.h"
+"${ProjDirPath}/../Common.h"
+"${ProjDirPath}/../Common.cpp"
+"${ProjDirPath}/../HardwareI2C.h"
+"${ProjDirPath}/../HardwareSerial.h"
+"${ProjDirPath}/../Interrupts.h"
+"${ProjDirPath}/../IPAddress.cpp"
+"${ProjDirPath}/../IPAddress.h"
+"${ProjDirPath}/../itoa.h"
+"${ProjDirPath}/../PluggableUSB.cpp"
+"${ProjDirPath}/../PluggableUSB.h"
+"${ProjDirPath}/../Print.cpp"
+"${ProjDirPath}/../Print.h"
+"${ProjDirPath}/../Printable.h"
+"${ProjDirPath}/../RingBuffer.h"
+"${ProjDirPath}/../Server.h"
+"${ProjDirPath}/../Stream.cpp"
+"${ProjDirPath}/../Stream.h"
+"${ProjDirPath}/../WString.cpp"
+"${ProjDirPath}/../WString.h"
+"${ProjDirPath}/../Udp.h"
+"${ProjDirPath}/../USBAPI.h"
+"${ProjDirPath}/../WCharacter.h"
 )
 
 
