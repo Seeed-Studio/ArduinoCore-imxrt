@@ -29,6 +29,7 @@
 #include "fsl_iomuxc.h"
 #include "fsl_gpio.h"
 #include "board.h"
+#include "pins_arduino.h"
 #define EXAMPLE_LED_GPIO BOARD_USER_LED_GPIO
 #define EXAMPLE_LED_GPIO_PIN BOARD_USER_LED_GPIO_PIN
 
@@ -49,10 +50,18 @@ void pinMode(pin_size_t pinNumber, uint8_t pinMode) {
    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
 
    IOMUXC_SetPinMux(
-      IOMUXC_GPIO_AD_B0_09_GPIO1_IO09,        /* GPIO_AD_B0_09 is configured as GPIO1_IO09 */
-      0U);                                    /* Software Input On Field: Input Path is determined by functionality */
+      g_APinDescription[pinNumber].FUN_GPIO.muxRegister,        /* GPIO_AD_B0_09 is configured as GPIO1_IO09 */
+      g_APinDescription[pinNumber].FUN_GPIO.muxMode,
+      g_APinDescription[pinNumber].FUN_GPIO.inputRegister,
+      g_APinDescription[pinNumber].FUN_GPIO.inputDaisy,
+      g_APinDescription[pinNumber].FUN_GPIO.configRegister,
+      0U);                                          /* Software Input On Field: Input Path is determined by functionality */
    IOMUXC_SetPinConfig(
-      IOMUXC_GPIO_AD_B0_09_GPIO1_IO09,        /* GPIO_AD_B0_09 PAD functional properties : */
+      g_APinDescription[pinNumber].FUN_GPIO.muxRegister,        /* GPIO_AD_B0_09 is configured as GPIO1_IO09 */
+      g_APinDescription[pinNumber].FUN_GPIO.muxMode,
+      g_APinDescription[pinNumber].FUN_GPIO.inputRegister,
+      g_APinDescription[pinNumber].FUN_GPIO.inputDaisy,
+      g_APinDescription[pinNumber].FUN_GPIO.configRegister,        /* GPIO_AD_B0_09 PAD functional properties : */
       0x10B0U);                               /* Slew Rate Field: Slow Slew Rate
                                                  Drive Strength Field: R0/6
                                                  Speed Field: medium(100MHz)
@@ -61,8 +70,23 @@ void pinMode(pin_size_t pinNumber, uint8_t pinMode) {
                                                  Pull / Keep Select Field: Keeper
                                                  Pull Up / Down Config. Field: 100K Ohm Pull Down
                                                  Hyst. Enable Field: Hysteresis Disabled */
-    gpio_pin_config_t led_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};                                            
-    GPIO_PinInit(EXAMPLE_LED_GPIO, EXAMPLE_LED_GPIO_PIN, &led_config);
+
+    gpio_pin_config_t  led_config = {kGPIO_DigitalInput, 0, kGPIO_NoIntmode};  
+    
+    switch (pinMode)
+    {
+    case OUTPUT:
+        led_config.direction = kGPIO_DigitalOutput;
+        break;
+    case INPUT:
+        led_config.direction = kGPIO_DigitalInput;
+        break;
+    default:
+        led_config.direction = kGPIO_DigitalInput;
+        break;
+    }
+
+    GPIO_PinInit(g_APinDescription[pinNumber].GROUP, g_APinDescription[pinNumber].PIN, &led_config);
 }
 
 /**
@@ -79,7 +103,11 @@ void pinMode(pin_size_t pinNumber, uint8_t pinMode) {
 * @return: Nothing
 */
 void digitalWrite(pin_size_t pinNumber, uint8_t status) {
-    GPIO_PinWrite(EXAMPLE_LED_GPIO, EXAMPLE_LED_GPIO_PIN, 0U);
+
+    if(status != 0 && status !=1){
+        return;
+    }
+    GPIO_PinWrite(g_APinDescription[pinNumber].GROUP, g_APinDescription[pinNumber].PIN, status);
 }
 
 /**
@@ -88,8 +116,7 @@ void digitalWrite(pin_size_t pinNumber, uint8_t status) {
  * @return: HIGH or LOWdefine
  */
 uint8_t digitalRead(pin_size_t pinNumber) {
-    GPIO_PinWrite(EXAMPLE_LED_GPIO, EXAMPLE_LED_GPIO_PIN, 1U);
-    return 1;
+    return GPIO_PinRead(g_APinDescription[pinNumber].GROUP, g_APinDescription[pinNumber].PIN);
 }
 
 #ifdef __cplusplus

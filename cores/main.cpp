@@ -1,15 +1,15 @@
 #include "Arduino.h"
-
+#include "pins_arduino.h"
 
 int main(void)
 {
     init();
-    pinMode(1,OUTPUT);
+    pinMode(USER_LED_G,OUTPUT);
 
     while(1){
-        digitalRead(0);
+        digitalWrite(USER_LED_G, 0);
         delay(1000);
-        digitalWrite(0,0);
+        digitalWrite(USER_LED_G, 1);
         delay(1000);
     }
     return 0;

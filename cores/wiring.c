@@ -29,10 +29,6 @@
 #include "board.h"
 #include "system_MIMXRT1052.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 /** Tick Counter united by ms */
 static volatile uint32_t _ulTickCount=0 ;
@@ -121,7 +117,3 @@ void init( void )
     }
 }
 
-
-#ifdef __cplusplus
-}
-#endif
