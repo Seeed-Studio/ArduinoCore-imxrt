@@ -40,6 +40,7 @@
 #include "Udp.h"
 #include "USBAPI.h"
 #include "WCharacter.h"
+#include "pins_arduino.h"
 #endif
 
 /* Standard C library includes */

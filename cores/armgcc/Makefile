@@ -149,6 +149,33 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/co
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Common.cpp.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Common.cpp.s
 
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.cpp.s
+
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/IPAddress.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/IPAddress.cpp.obj
 
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/IPAddress.obj
@@ -872,6 +899,9 @@ help:
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Common.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Common.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Common.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/HardwareSerial.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/IPAddress.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/IPAddress.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/IPAddress.s

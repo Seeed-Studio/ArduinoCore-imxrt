@@ -1031,6 +1031,7 @@ add_executable(main.elf
 "${ProjDirPath}/../wiring.c"
 "${ProjDirPath}/../wiring_digital.c"
 "${ProjDirPath}/../hooks.c"
+"${ProjDirPath}/../HardwareSerial.cpp"
 )
 
 

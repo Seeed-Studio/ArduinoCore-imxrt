@@ -1,2 +1,6 @@
 ##ignore this file##
 /cores/armgcc/CMakeFiles/ 
+
+output.map
+CMakeCache.txt
+Makefile.txt
