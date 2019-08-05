@@ -40,6 +40,7 @@
 #include "Udp.h"
 #include "USBAPI.h"
 #include "WCharacter.h"
+#include "wiring_analog.h"
 #include "pins_arduino.h"
 #endif
 

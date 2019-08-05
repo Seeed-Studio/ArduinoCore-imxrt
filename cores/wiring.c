@@ -28,6 +28,7 @@
 #include "clock_config.h"
 #include "board.h"
 #include "system_MIMXRT1052.h"
+#include "fsl_adc.h"
 
 
 /** Tick Counter united by ms */
@@ -115,5 +116,32 @@ void init( void )
         {
         }
     }
+
+    // Initialize Analog Controller
+    adc_config_t adcConfigStrcut;
+     /*
+     *  config->enableAsynchronousClockOutput = true;
+     *  config->enableOverWrite =               false;
+     *  config->enableContinuousConversion =    false;
+     *  config->enableHighSpeed =               false;
+     *  config->enableLowPower =                false;
+     *  config->enableLongSample =              false;
+     *  config->referenceVoltageSource =        kADC_ReferenceVoltageSourceVref;
+     *  config->samplePeriodMode =              kADC_SamplePeriod2or12Clocks;
+     *  config->clockSource =                   kADC_ClockSourceAD;
+     *  config->clockDriver =                   kADC_ClockDriver1;
+     *  config->resolution =                    kADC_Resolution12Bit;
+     */
+    ADC_GetDefaultConfig(&adcConfigStrcut);
+    ADC_Init(ADC1, &adcConfigStrcut);
+    ADC_Init(ADC2, &adcConfigStrcut);
+#if !(defined(FSL_FEATURE_ADC_SUPPORT_HARDWARE_TRIGGER_REMOVE) && FSL_FEATURE_ADC_SUPPORT_HARDWARE_TRIGGER_REMOVE)
+    ADC_EnableHardwareTrigger(ADC1, false);
+    ADC_EnableHardwareTrigger(ADC2, false);
+#endif
+    
+    // waitting for ADC Auto Calibiration
+    while (!(kStatus_Success == ADC_DoAutoCalibration(ADC1))){}
+    while (!(kStatus_Success == ADC_DoAutoCalibration(ADC2))){}
 }
 
