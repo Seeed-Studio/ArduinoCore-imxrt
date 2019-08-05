@@ -34,6 +34,7 @@ extern "C" {
 #include "fsl_common.h"
 #include "fsl_iomuxc.h"
 #include "fsl_gpio.h"
+#include "fsl_adc.h"
 
 #define J3_4    0U
 #define J3_5    1U
@@ -75,6 +76,11 @@ extern "C" {
 #define RX0  J3_19
 #define TX0  J3_20
 
+#define AD2_9  J3_9
+#define AD2_10  J3_8
+#define AD1_3  J3_14
+#define AD1_4  J3_15
+
 typedef struct _MuxConfig
 {
     uint32_t muxRegister;
@@ -89,6 +95,8 @@ typedef struct _MuxConfig
 typedef struct _PinDescription {
   GPIO_Type*  GROUP;
   uint32_t PIN;
+  ADC_Type *  ADC;
+  uint32_t channelNumber;
   MuxConfig FUN_GPIO;
   MuxConfig FUN_UART;
   MuxConfig FUN_PWM;
@@ -151,6 +159,8 @@ const PinDescription g_APinDescription[]=
    {   //ENET_RXD1 GPIO_B1_05 J3_8 #4
       .GROUP = GPIO2,
       .PIN = 21,
+      .ADC = ADC2,
+      .channelNumber = 10,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_05_GPIO1_IO21
       },
@@ -161,6 +171,8 @@ const PinDescription g_APinDescription[]=
   {   //ENET_RXD0 GPIO_B1_04 J3_9 #5
       .GROUP = GPIO2,
       .PIN = 21,
+      .ADC = ADC2,
+      .channelNumber = 9,
       .FUN_GPIO = {
           IOMUXC_GPIO_B1_04_GPIO2_IO20
       },
@@ -211,6 +223,8 @@ const PinDescription g_APinDescription[]=
   {   //CAN2_TX GPIO_AD_B0_14 J3_14 #10
       .GROUP = GPIO1,
       .PIN = 14,
+      .ADC = ADC1,
+      .channelNumber = 3,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B0_14_GPIO1_IO14
       },
@@ -221,6 +235,8 @@ const PinDescription g_APinDescription[]=
    {   //CAN2_RX GPIO_AD_B0_15 J3_15 #11
       .GROUP = GPIO1,
       .PIN = 15,
+      .ADC = ADC1,
+      .channelNumber = 4,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B0_15_GPIO1_IO15
       },

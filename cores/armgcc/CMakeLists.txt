@@ -956,6 +956,8 @@ add_executable(main.elf
 "${ProjDirPath}/../clock_config.h"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_gpio.c"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_gpio.h"
+"${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_adc.c"
+"${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_adc.h"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_clock.c"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_clock.h"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_common.c"
@@ -1030,6 +1032,7 @@ add_executable(main.elf
 "${ProjDirPath}/../WCharacter.h"
 "${ProjDirPath}/../wiring.c"
 "${ProjDirPath}/../wiring_digital.c"
+"${ProjDirPath}/../wiring_analog.c"
 "${ProjDirPath}/../hooks.c"
 "${ProjDirPath}/../HardwareSerial.cpp"
 )

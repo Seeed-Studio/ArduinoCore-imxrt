@@ -446,6 +446,33 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/co
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.c.s
 
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.c.s
+
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.c.obj
 
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.obj
@@ -634,6 +661,33 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/components/uart/lpuart_adapter.
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/components/uart/lpuart_adapter.c.s:
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/components/uart/lpuart_adapter.c.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/components/uart/lpuart_adapter.c.s
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.c.s
 
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_clock.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_clock.c.obj
 
@@ -932,6 +986,9 @@ help:
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_analog.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/wiring_digital.s
@@ -953,6 +1010,9 @@ help:
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/components/uart/lpuart_adapter.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/components/uart/lpuart_adapter.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/components/uart/lpuart_adapter.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_adc.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_clock.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_clock.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_clock.s
