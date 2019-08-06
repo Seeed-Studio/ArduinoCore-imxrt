@@ -30,6 +30,7 @@
 #include "fsl_iomuxc.h"
 #include "fsl_adc.h"
 #include "pins_arduino.h"
+#include "fsl_pwm.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -82,33 +83,29 @@ void analogReadResolution(int res)
     while (!(kStatus_Success == ADC_DoAutoCalibration(ADC2))){}
 }
 
-void analogWriteResolution(int res)
-{
-  
-}
-
-
 uint32_t analogRead(uint32_t pin)
 {
-    if(g_APinDescription[pin].ADC == NULL){ /*does not a AD Pin */
+    PinDescription const *g_pinDes = &g_APinDescription[pin];
+
+    if(g_pinDes->ADC == NULL){ /*does not a AD Pin */
         return 0;
     }
 
     CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
 
    IOMUXC_SetPinMux(
-      g_APinDescription[pin].FUN_GPIO.muxRegister,       
-      g_APinDescription[pin].FUN_GPIO.muxMode,
-      g_APinDescription[pin].FUN_GPIO.inputRegister,
-      g_APinDescription[pin].FUN_GPIO.inputDaisy,
-      g_APinDescription[pin].FUN_GPIO.configRegister,
+      g_pinDes->FUN_GPIO.muxRegister,       
+      g_pinDes->FUN_GPIO.muxMode,
+      g_pinDes->FUN_GPIO.inputRegister,
+      g_pinDes->FUN_GPIO.inputDaisy,
+      g_pinDes->FUN_GPIO.configRegister,
       0U);                                          /* Software Input On Field: Input Path is determined by functionality */
   IOMUXC_SetPinConfig(
-      g_APinDescription[pin].FUN_GPIO.muxRegister,       
-      g_APinDescription[pin].FUN_GPIO.muxMode,
-      g_APinDescription[pin].FUN_GPIO.inputRegister,
-      g_APinDescription[pin].FUN_GPIO.inputDaisy,
-      g_APinDescription[pin].FUN_GPIO.configRegister,      /* GPIO_AD_B1_11 PAD functional properties : */
+      g_pinDes->FUN_GPIO.muxRegister,       
+      g_pinDes->FUN_GPIO.muxMode,
+      g_pinDes->FUN_GPIO.inputRegister,
+      g_pinDes->FUN_GPIO.inputDaisy,
+      g_pinDes->FUN_GPIO.configRegister,      /* GPIO_AD_B1_11 PAD functional properties : */
       0xB0u);                                 /* Slew Rate Field: Slow Slew Rate
                                                  Drive Strength Field: R0/6
                                                  Speed Field: medium(100MHz)
@@ -122,7 +119,7 @@ uint32_t analogRead(uint32_t pin)
     adc_channel_config_t adcChannelConfigStruct;
 
     /* Configure the user channel and interrupt. */
-    adcChannelConfigStruct.channelNumber                        = g_APinDescription[pin].channelNumber;
+    adcChannelConfigStruct.channelNumber                        = g_pinDes->adcChannel;
     adcChannelConfigStruct.enableInterruptOnConversionCompleted = false;
 
      /*
@@ -131,13 +128,12 @@ uint32_t analogRead(uint32_t pin)
          just to change the "channelNumber" field in channel's configuration structure, and call the
          "ADC_ChannelConfigure() again.
         */
-    ADC_SetChannelConfig(g_APinDescription[pin].ADC, 0, &adcChannelConfigStruct);
+    ADC_SetChannelConfig(g_pinDes->ADC, 0, &adcChannelConfigStruct);
 
-   while (0U == ADC_GetChannelStatusFlags(g_APinDescription[pin].ADC, 0)){}
+   while (0U == ADC_GetChannelStatusFlags(g_pinDes->ADC, 0)){}
 
-   return ADC_GetChannelConversionValue(g_APinDescription[pin].ADC, 0);
+   return ADC_GetChannelConversionValue(g_pinDes->ADC, 0);
 }
-
 
 // Right now, PWM output only works on the pins with
 // hardware support.  These are defined in the appropriate
@@ -145,8 +141,91 @@ uint32_t analogRead(uint32_t pin)
 // to digital output.
 void analogWrite(uint32_t pin, uint32_t value)
 {
+    
+    if (value == 0) // No need to turn on PWM
+	{
+        pinMode(pin, OUTPUT);
+		digitalWrite(pin, LOW); return;
+	}
+	else if (value >= 255)
+	{
+        pinMode(pin, OUTPUT);
+		digitalWrite(pin, HIGH); return;
+	}
 
- 
+    PinDescription const *g_pinDes = &g_APinDescription[pin];
+     if(g_pinDes->PWM == NULL){ /*does not a PWM Pin */
+         if (value < 128)
+	    {
+            pinMode(pin, OUTPUT);
+		    digitalWrite(pin, LOW); return;
+	    }
+	    else 
+	    {
+            pinMode(pin, OUTPUT);
+		    digitalWrite(pin, HIGH); return;
+	    }
+        return;
+    }
+
+    uint8_t  pwmVal = 100*value / 255; // map 0-255 to 0-100
+
+    if(!(g_pinDes->PWM->MCTRL & (PWM_MCTRL_RUN((1U << g_pinDes->pwm_submodule))))){ // if first use pin as pwm
+
+     /*Initialize the flexPWM  PWM4_A0  PWM4_A1 */
+    pwm_signal_param_t pwmSignal[1];
+    pwm_config_t pwmConfig;
+   
+  
+
+    PWM_GetDefaultConfig(&pwmConfig);                    
+    pwmConfig.reloadLogic = kPWM_ReloadPwmFullCycle; 
+    pwmConfig.pairOperation = kPWM_Independent;      
+    PWM_Init(g_pinDes->PWM, kPWM_Module_0, &pwmConfig);    
+
+    pwmSignal[0].pwmChannel = kPWM_PwmA;             
+    pwmSignal[0].level = kPWM_HighTrue;              
+    pwmSignal[0].dutyCyclePercent = 50;             
+        
+   
+    PWM_SetupPwm(g_pinDes->PWM, g_pinDes->pwm_submodule, pwmSignal, 1, kPWM_SignedCenterAligned, 1000, CLOCK_GetFreq(kCLOCK_IpgClk));        
+
+
+    PWM_SetPwmLdok(g_pinDes->PWM, (1U << g_pinDes->pwm_submodule) , true);    
+    PWM_StartTimer(g_pinDes->PWM, (1U << g_pinDes->pwm_submodule));        
+
+    //turn off falut detection
+    g_pinDes->PWM->SM[g_pinDes->pwm_submodule].DISMAP[0]=0;       
+                           
+    }
+
+    
+   CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
+
+   IOMUXC_SetPinMux(
+      g_pinDes->FUN_PWM.muxRegister,       
+      g_pinDes->FUN_PWM.muxMode,
+      g_pinDes->FUN_PWM.inputRegister,
+      g_pinDes->FUN_PWM.inputDaisy,
+      g_pinDes->FUN_PWM.configRegister,
+      0U);                                          /* Software Input On Field: Input Path is determined by functionality */
+  IOMUXC_SetPinConfig(
+      g_pinDes->FUN_PWM.muxRegister,       
+      g_pinDes->FUN_PWM.muxMode,
+      g_pinDes->FUN_PWM.inputRegister,
+      g_pinDes->FUN_PWM.inputDaisy,
+      g_pinDes->FUN_PWM.configRegister,      
+      0x10B0u);                                 /* Slew Rate Field: Slow Slew Rate
+                                                 Drive Strength Field: R0/6
+                                                 Speed Field: medium(100MHz)
+                                                 Open Drain Enable Field: Open Drain Disabled
+                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
+                                                 Pull / Keep Select Field: Keeper */
+
+    // update the dutyCyclePercent
+    PWM_UpdatePwmDutycycle(g_pinDes->PWM,g_pinDes->pwm_submodule, g_pinDes->pwm_channel, kPWM_SignedCenterAligned, pwmVal); //更新占空比
+    PWM_SetPwmLdok(g_pinDes->PWM, (1U << g_pinDes->pwm_submodule), true);   
+
 }
 
 #ifdef __cplusplus

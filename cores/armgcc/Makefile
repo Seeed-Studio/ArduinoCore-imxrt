@@ -797,6 +797,60 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.c.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.c.s
 
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.c.s
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.c.s
+
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/gcc/startup_MIMXRT1052.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/gcc/startup_MIMXRT1052.S.obj
 
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/gcc/startup_MIMXRT1052.obj
@@ -1025,6 +1079,12 @@ help:
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_pwm.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_xbara.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/gcc/startup_MIMXRT1052.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/system_MIMXRT1052.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/system_MIMXRT1052.i

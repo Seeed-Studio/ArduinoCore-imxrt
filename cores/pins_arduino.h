@@ -1,4 +1,4 @@
-/**
+/*
  * The MIT License (MIT)
  * 
  * Author: Hongtai Liu (lht856@foxmail.com)
@@ -35,6 +35,7 @@ extern "C" {
 #include "fsl_iomuxc.h"
 #include "fsl_gpio.h"
 #include "fsl_adc.h"
+#include "fsl_pwm.h"
 
 #define J3_4    0U
 #define J3_5    1U
@@ -81,6 +82,10 @@ extern "C" {
 #define AD1_3  J3_14
 #define AD1_4  J3_15
 
+#define PWM4_0  J4_8
+#define PWM4_1  J4_9
+
+
 typedef struct _MuxConfig
 {
     uint32_t muxRegister;
@@ -96,7 +101,10 @@ typedef struct _PinDescription {
   GPIO_Type*  GROUP;
   uint32_t PIN;
   ADC_Type *  ADC;
-  uint32_t channelNumber;
+  uint32_t adcChannel;
+  PWM_Type * PWM;
+  pwm_submodule_t pwm_submodule;
+  pwm_channels_t pwm_channel; 
   MuxConfig FUN_GPIO;
   MuxConfig FUN_UART;
   MuxConfig FUN_PWM;
@@ -160,7 +168,7 @@ const PinDescription g_APinDescription[]=
       .GROUP = GPIO2,
       .PIN = 21,
       .ADC = ADC2,
-      .channelNumber = 10,
+      .adcChannel = 10,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_05_GPIO1_IO21
       },
@@ -172,7 +180,7 @@ const PinDescription g_APinDescription[]=
       .GROUP = GPIO2,
       .PIN = 21,
       .ADC = ADC2,
-      .channelNumber = 9,
+      .adcChannel = 9,
       .FUN_GPIO = {
           IOMUXC_GPIO_B1_04_GPIO2_IO20
       },
@@ -224,7 +232,7 @@ const PinDescription g_APinDescription[]=
       .GROUP = GPIO1,
       .PIN = 14,
       .ADC = ADC1,
-      .channelNumber = 3,
+      .adcChannel = 3,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B0_14_GPIO1_IO14
       },
@@ -236,7 +244,7 @@ const PinDescription g_APinDescription[]=
       .GROUP = GPIO1,
       .PIN = 15,
       .ADC = ADC1,
-      .channelNumber = 4,
+      .adcChannel = 4,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B0_15_GPIO1_IO15
       },
@@ -327,8 +335,14 @@ const PinDescription g_APinDescription[]=
    {   //CSI_DATA08 GPIO_AD_B1_08 J4_08 #20
       .GROUP = GPIO1,
       .PIN = 24,
+      .PWM = PWM4,
+      .pwm_submodule = kPWM_Module_0,
+      .pwm_channel = kPWM_PwmA,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_08_GPIO1_IO24
+      },
+      .FUN_PWM = {
+          IOMUXC_GPIO_AD_B1_08_FLEXPWM4_PWMA00
       },
       .FUN_CSI= {
           IOMUXC_GPIO_AD_B1_08_CSI_DATA09
@@ -337,8 +351,14 @@ const PinDescription g_APinDescription[]=
    {   //SAI1_MCLK CSI_DATA09 GPIO_AD_B1_09 J4_09 #21
       .GROUP = GPIO1,
       .PIN = 25,
+      .PWM = PWM4,
+      .pwm_submodule = kPWM_Module_1,
+      .pwm_channel = kPWM_PwmA,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_09_GPIO1_IO25
+      },
+      .FUN_PWM = {
+          IOMUXC_GPIO_AD_B1_09_FLEXPWM4_PWMA01
       },
       .FUN_SAI = {
           IOMUXC_GPIO_AD_B1_10_SAI1_RX_SYNC
