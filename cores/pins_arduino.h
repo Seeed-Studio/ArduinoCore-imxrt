@@ -85,6 +85,16 @@ extern "C" {
 #define PWM4_0  J4_8
 #define PWM4_1  J4_9
 
+#define I2C1    LPI2C1
+#define I2C1_SCL    J3_16
+#define I2C1_SDA    J3_17
+
+#define I2C3    LPI2C3
+#define I2C3_SCL    J4_7
+#define I2C3_SDA    J4_6
+
+
+
 
 typedef struct _MuxConfig
 {
@@ -312,21 +322,27 @@ const PinDescription g_APinDescription[]=
           IOMUXC_GPIO_AD_B1_05_CSI_MCLK
       }
   },
-   {   //CSI_VSYNC GPIO_AD_B1_06 J4_06 #18
+   {   //I2C3 CSI_VSYNC GPIO_AD_B1_06 J4_06 #18
       .GROUP = GPIO1,
       .PIN = 22,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_06_GPIO1_IO22
       },
+      .FUN_I2C = {
+          IOMUXC_GPIO_AD_B1_06_LPI2C3_SDA
+      },
       .FUN_CSI= {
           IOMUXC_GPIO_AD_B1_06_CSI_VSYNC
       }
   },
-  {   //CSI_HSYNC GPIO_AD_B1_07 J4_07 #19
+  {   //I2C3 CSI_HSYNC GPIO_AD_B1_07 J4_07 #19
       .GROUP = GPIO1,
       .PIN = 23,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_07_GPIO1_IO23
+      },
+       .FUN_I2C = {
+          IOMUXC_GPIO_AD_B1_07_LPI2C3_SCL
       },
       .FUN_CSI= {
           IOMUXC_GPIO_AD_B1_07_CSI_HSYNC

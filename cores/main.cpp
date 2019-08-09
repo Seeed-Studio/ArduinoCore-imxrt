@@ -1,38 +1,30 @@
 #include "Arduino.h"
 #include "pins_arduino.h"
+#include "Wire.h"
 
 
 int main(void)
 {
     init();
     Serial.begin(115200);
-    uint16_t value = 0;
-    uint8_t status = 0;
     Serial.println("begin");
-    
-     
+    Wire.begin();
+    Wire3.begin(0x18);
+    uint8_t data = 0;
     while (1)
     {
-      
-      analogWrite(PWM4_0, value);
-      if(status){
-        analogWrite(PWM4_1, 255);
-      }else
-      {
-        analogWrite(PWM4_1, 0);
-      }
-      
-      if(value > 255){
-        value = 0;
-        status ^= 1;
+    Wire.beginTransmission(0x18);
+    Wire.write(0x0F);
+    Wire.endTransmission();
 
-      }
-      value += 1;
-      delay(10);
-      Serial.print(analogRead(AD1_3));Serial.print("\t");
-      Serial.print(analogRead(AD2_9));Serial.print("\n");
+    Wire.requestFrom((int16_t)0x18, 1);
+    while(Wire.available())
+    {
+        data =Wire.read();
+    }
+      Serial.print("data: ");
+      Serial.println(data);
     }
     
     return 0;
-  
 }

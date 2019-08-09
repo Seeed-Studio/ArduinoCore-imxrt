@@ -311,6 +311,33 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/co
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/WString.cpp.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/WString.cpp.s
 
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.cpp.s
+
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/board.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/board.c.obj
 
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/board.obj
@@ -770,6 +797,33 @@ C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_
 	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_gpio.c.s
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_gpio.c.s
 
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.obj
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.obj
+
+# target to build an object file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.obj:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.obj
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.obj
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.i: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.i
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.i
+
+# target to preprocess a source file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.i:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.i
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.i
+
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.s: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.s
+
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.s
+
+# target to generate assembly for a file
+C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.s:
+	$(MAKE) -f CMakeFiles\main.elf.dir\build.make CMakeFiles/main.elf.dir/C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.s
+.PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.c.s
+
 C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.obj: C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.c.obj
 
 .PHONY : C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.obj
@@ -1025,6 +1079,9 @@ help:
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/WString.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/WString.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/WString.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/Wire.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/board.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/board.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/boards/evkbimxrt1050/Arduino/cores/board.s
@@ -1076,6 +1133,9 @@ help:
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_gpio.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_gpio.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_gpio.s
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.obj
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.i
+	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpi2c.s
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.obj
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.i
 	@echo ... C_/Users/lht820/Desktop/SDK_2.6.1_EVKB-IMXRT1050/devices/MIMXRT1052/drivers/fsl_lpuart.s
