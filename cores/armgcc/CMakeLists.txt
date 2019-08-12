@@ -966,6 +966,8 @@ add_executable(main.elf
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_clock.h"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_lpi2c.c"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_lpi2c.h"
+"${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_lpspi.c"
+"${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_lpspi.h"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_common.c"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/drivers/fsl_common.h"
 "${ProjDirPath}/../../../../../devices/MIMXRT1052/MIMXRT1052.h"
@@ -1042,6 +1044,7 @@ add_executable(main.elf
 "${ProjDirPath}/../hooks.c"
 "${ProjDirPath}/../HardwareSerial.cpp"
 "${ProjDirPath}/../Wire.cpp"
+"${ProjDirPath}/../SPI.cpp"
 )
 
 

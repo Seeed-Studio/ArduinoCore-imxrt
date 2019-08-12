@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * 
- * Author: Hongtai Liu (lht856@fox.com)
+ * Author: Hongtai Liu (lht856@foxmail.com)
  * 
  * Copyright (C) 2019  Seeed Technology Co.,Ltd. 
  * 

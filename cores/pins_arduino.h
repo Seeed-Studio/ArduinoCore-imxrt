@@ -89,11 +89,22 @@ extern "C" {
 #define I2C1_SCL    J3_16
 #define I2C1_SDA    J3_17
 
+// default I2C PORT
+#define SCL I2C1_SCL
+#define SDA I2C1_SDA
+
 #define I2C3    LPI2C3
 #define I2C3_SCL    J4_7
 #define I2C3_SDA    J4_6
 
+// default I2C PORT
+#define SPI3_MOSI    J4_13
+#define SPI3_MISO    J4_14
+#define SPI3_SCK     J4_15
 
+#define MOSI SPI3_MOSI
+#define MISO SPI3_MISO
+#define SCK  SPI3_SCK
 
 
 typedef struct _MuxConfig
@@ -322,7 +333,7 @@ const PinDescription g_APinDescription[]=
           IOMUXC_GPIO_AD_B1_05_CSI_MCLK
       }
   },
-   {   //I2C3 CSI_VSYNC GPIO_AD_B1_06 J4_06 #18
+   {   //I2C3  CSI_VSYNC GPIO_AD_B1_06 J4_06 #18
       .GROUP = GPIO1,
       .PIN = 22,
       .FUN_GPIO = {
@@ -341,7 +352,7 @@ const PinDescription g_APinDescription[]=
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_07_GPIO1_IO23
       },
-       .FUN_I2C = {
+      .FUN_I2C = {
           IOMUXC_GPIO_AD_B1_07_LPI2C3_SCL
       },
       .FUN_CSI= {
@@ -422,11 +433,14 @@ const PinDescription g_APinDescription[]=
           IOMUXC_GPIO_AD_B1_12_CSI_DATA05
       }
   },
-  {   //SAI1_TX_DATA00 CSI_DATA04 GPIO_AD_B1_13 J4_13 #25
+  {   //SPI3_MISO SAI1_TX_DATA00 CSI_DATA04 GPIO_AD_B1_13 J4_13 #25
       .GROUP = GPIO1,
       .PIN = 29,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_13_GPIO1_IO29
+      },
+      .FUN_SPI = {
+          IOMUXC_GPIO_AD_B1_13_LPSPI3_SDI
       },
       .FUN_SAI = {
           IOMUXC_GPIO_AD_B1_13_SAI1_TX_DATA00
@@ -435,11 +449,14 @@ const PinDescription g_APinDescription[]=
           IOMUXC_GPIO_AD_B1_13_CSI_DATA04
       }
   },
-   {   //SAI1_TX_BCLK CSI_DATA03 GPIO_AD_B1_14 J4_14 #26
+   {   //SPI3_MOSI SAI1_TX_BCLK CSI_DATA03 GPIO_AD_B1_14 J4_14 #26
       .GROUP = GPIO1,
       .PIN = 30,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_14_GPIO1_IO30
+      },
+     .FUN_SPI = {
+          IOMUXC_GPIO_AD_B1_14_LPSPI3_SDO
       },
       .FUN_SAI = {
           IOMUXC_GPIO_AD_B1_14_SAI1_TX_BCLK
@@ -448,11 +465,14 @@ const PinDescription g_APinDescription[]=
           IOMUXC_GPIO_AD_B1_14_CSI_DATA03
       }
   },
-  {   //SAI1_TX_SYNC CSI_DATA02 GPIO_AD_B1_15 J4_15 #27
+  {   //SPI3_SCK SAI1_TX_SYNC CSI_DATA02  GPIO_AD_B1_15 J4_15 #27
       .GROUP = GPIO1,
       .PIN = 31,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B1_15_GPIO1_IO31
+      },
+      .FUN_SPI = {
+          IOMUXC_GPIO_AD_B1_15_LPSPI3_SCK
       },
       .FUN_SAI = {
           IOMUXC_GPIO_AD_B1_15_SAI1_TX_SYNC
