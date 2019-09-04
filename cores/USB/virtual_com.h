@@ -36,7 +36,6 @@
 #include "fsl_device_registers.h"
 #include "clock_config.h"
 #include "board.h"
-#include "app.h"
 #include <stdio.h>
 #include <stdlib.h>
 

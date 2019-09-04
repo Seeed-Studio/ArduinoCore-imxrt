@@ -43,7 +43,6 @@
     defined(FSL_FEATURE_USB_KHCI_USB_RAM) && (FSL_FEATURE_USB_KHCI_USB_RAM > 0U)
 extern uint8_t USB_EnterLowpowerMode(void);
 #endif
-#include "pin_mux.h"
 /*******************************************************************************
 * Definitions
 ******************************************************************************/
@@ -557,7 +556,7 @@ void APPTask()
 	{
 		vcom_write_buf(buff, s_recvSize);
 
-			PRINTF("s_recving£º%d\r\n", s_recvSize);
+			PRINTF("s_recvingï¿½ï¿½%d\r\n", s_recvSize);
 			s_recvSize = 0;
 	}
 	
