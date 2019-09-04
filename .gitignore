@@ -1,6 +1,2 @@
-##ignore this file##
-/cores/armgcc/CMakeFiles/ 
-
-/cores/armgcc/output.map
-/cores/armgcc/CMakeCache.txt
-/cores/armgcc/Makefile.txt
+.vscode/
+build/
