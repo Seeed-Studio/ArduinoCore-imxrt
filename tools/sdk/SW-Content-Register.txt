@@ -31,15 +31,6 @@ sdmmc                      name: SD MMC SDIO Card middleware
                            version: 2.2.7                                    
                            Format: source code                               
 
-lwip                       Author: Swedish Institute of Computer Science     
-                           Description: A light-weight TCP/IP stack          
-                           Format: source code                               
-                           License: Open Source - BSD-3-Clause               
-                           Location: middleware/lwip                         
-                           name: lwIP TCP/IP Stack                           
-                           URL: http://savannah.nongnu.org/projects/lwip     
-                           version: 2.1.2                                    
-
 cmsisdsp                   name: CMSIS DSP Library                           
                            Format: source code                               
                            License: Apache License 2.0, See CMSIS/LICENSE.txt
