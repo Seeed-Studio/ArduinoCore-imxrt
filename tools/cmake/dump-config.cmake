@@ -1,6 +1,5 @@
 message("")
 message("Project: ${PROJECT_NAME}")
-message("  LIST_FILE=${CMAKE_PARENT_LIST_FILE}")
 message("  TOOLCHAIN=${TOOLCHAIN}")
 message("")
 message("  CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}")

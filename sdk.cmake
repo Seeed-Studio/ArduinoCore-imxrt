@@ -3,7 +3,6 @@
 add_lib_files(${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052/drivers/*.c)
 set(fsl_bsp_drivers_files ${LIB_FILES})
 set(LIB_FILES "" CACHE STRING "Lib Files" FORCE)
-message("${fsl_bsp_drivers_files}")
 
 
 
@@ -33,12 +32,14 @@ target_include_directories(fsl_usb_drivers PUBLIC
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/middleware/usb/host
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052/utilities/debug_console
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/serial_manager
-                    ${CMAKE_CURRENT_SOURCE_DIR}/cores/USB
-                    ${CMAKE_CURRENT_SOURCE_DIR}/cores
+                    ${CMAKE_CURRENT_SOURCE_DIR}/cores/arduino/USB
+                    ${CMAKE_CURRENT_SOURCE_DIR}/cores/arduino
                     )
 
-add_library(fsl_sdk STATIC  ${fsl_bsp_drivers_files})
-target_include_directories(fsl_sdk PUBLIC
+add_library(fsl_bsp STATIC  ${fsl_bsp_drivers_files}
+                            ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052/system_MIMXRT1052.c
+                            )
+target_include_directories(fsl_bsp PUBLIC
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/CMSIS/Include
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052/drivers
@@ -50,9 +51,7 @@ target_include_directories(fsl_sdk PUBLIC
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/lists
                                         )
                     
-target_link_libraries(fsl_sdk STATIC    ${fsl_usb_drivers}
-                                        ${fsl_xip_drivers}
-                                        )
+
                                             
 add_lib_files(${CMAKE_CURRENT_SOURCE_DIR}/cores/*.c)
 add_lib_files(${CMAKE_CURRENT_SOURCE_DIR}/cores/*.cpp)
@@ -70,6 +69,6 @@ target_include_directories(arduinocore PUBLIC
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/middleware/usb/host
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052/utilities/debug_console
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/serial_manager
-                    ${CMAKE_CURRENT_SOURCE_DIR}/cores/USB
-                    ${CMAKE_CURRENT_SOURCE_DIR}/cores
+                    ${CMAKE_CURRENT_SOURCE_DIR}/cores/arduino/USB
+                    ${CMAKE_CURRENT_SOURCE_DIR}/cores/arduino
                     )

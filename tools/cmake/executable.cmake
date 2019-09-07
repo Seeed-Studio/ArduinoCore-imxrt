@@ -2,14 +2,21 @@
 removeDuplicateSubstring(${CMAKE_C_FLAGS} CMAKE_C_FLAGS)
 removeDuplicateSubstring(${CMAKE_CXX_FLAGS} CMAKE_CXX_FLAGS)
 
-message("SOURCE_FILES=${SOURCE_FILES}")
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE C)
 
 
 target_link_libraries(${PROJECT_NAME}
-
+            -Wl,--start-group
+            gcc m c nosys
+            -Wl,--whole-archive
+            fsl_bsp
+            arduinocore
+            fsl_xip_drivers
+            fsl_usb_drivers
+            -Wl,--no-whole-archive
+            -Wl,--end-group
         )
 
 IF(SUFFIX)
