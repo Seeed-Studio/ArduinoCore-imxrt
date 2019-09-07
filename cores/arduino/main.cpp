@@ -1,18 +1,23 @@
+#ifdef ARDUINO_MAIN
+
 #include "Arduino.h"
-#include "pins_arduino.h"
-#include "SPI.h"
 
+void  __attribute__((weak)) setup() {
 
-int main(void)
+}
+
+void  __attribute__((weak)) loop() {
+
+}
+
+int  __attribute__((weak)) main()
 {
     init();
-    Serial.begin(115200);
-    Serial.println("begin");
-    SPI.begin();
-    SPI.beginTransaction(SPISettings(50000000, MSBFIRST, SPI_MODE0));
-    while(1){
-      SPI.transfer(0x74);
+    setup();
+    for (;;)
+    {
+        loop();
     }
-    
-    return 0;
 }
+
+#endif
