@@ -26,7 +26,7 @@ global_set(CMAKE_OBJCOPY "${TOOLCHAIN}/arm-none-eabi-objcopy${EXT}")
 global_set(CMAKE_SIZE "${TOOLCHAIN}/arm-none-eabi-size${EXT}")
 global_set(CMAKE_OBJDUMP "${TOOLCHAIN}/arm-none-eabi-objdump${EXT}")
 if (WIN32)
-    global_set(CMAKE_MAKE_PROGRAM "${TOOLCHAIN}/mingw32-make${EXT}")
+   # global_set(CMAKE_MAKE_PROGRAM "${TOOLCHAIN}/mingw32-make${EXT}")
 endif ()
 
 
