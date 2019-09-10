@@ -503,23 +503,23 @@ const PinDescription g_APinDescription[]=
   },
    {   //USER_LED_R GPIO_AD_B0_08 #30
       .GROUP = GPIO1,
-      .PIN = 8,
-      .FUN_GPIO = {
-          IOMUXC_GPIO_AD_B0_08_GPIO1_IO08
-      }
-  },
-   {   //USER_LED_G GPIO_AD_B0_09  #31
-      .GROUP = GPIO1,
       .PIN = 9,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B0_09_GPIO1_IO09
       }
   },
-   {   //USER_LED_B GPIO_AD_B0_10  #32
+   {   //USER_LED_G GPIO_AD_B0_09  #31
       .GROUP = GPIO1,
       .PIN = 10,
       .FUN_GPIO = {
           IOMUXC_GPIO_AD_B0_10_GPIO1_IO10
+      }
+  },
+   {   //USER_LED_B GPIO_AD_B0_10  #32
+      .GROUP = GPIO1,
+      .PIN = 11,
+      .FUN_GPIO = {
+          IOMUXC_GPIO_AD_B0_11_GPIO1_IO11
       }
   }
 };
