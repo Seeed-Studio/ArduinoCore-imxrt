@@ -5,8 +5,7 @@ set(fsl_bsp_drivers_files ${LIB_FILES})
 set(LIB_FILES "" CACHE STRING "Lib Files" FORCE)
 
 
-
-add_lib_files(${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/boards/evkbimxrt1050/xip/*.c)
+add_lib_files(${CMAKE_CURRENT_SOURCE_DIR}/variants/${BOARD}/xip/*.c)
 set(fsl_xip_drivers_files ${LIB_FILES})
 set(LIB_FILES "" CACHE STRING "Lib Files" FORCE)
 add_library(fsl_xip_drivers STATIC  ${fsl_xip_drivers_files})
@@ -14,6 +13,7 @@ target_include_directories(fsl_xip_drivers PUBLIC
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/CMSIS/Include
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/MIMXRT1052/drivers
+                    ${CMAKE_CURRENT_SOURCE_DIR}/cores/arduino
                     )
 
 
