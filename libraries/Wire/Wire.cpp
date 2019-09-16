@@ -29,10 +29,9 @@ extern "C" {
 }
 
 #include "Arduino.h"
+#include "wiring_private.h"
 #include "Wire.h"
-#include "fsl_common.h"
-#include "fsl_iomuxc.h"
-#include "pins_arduino.h"
+
 
 
 TwoWire::TwoWire(LPI2C_Type * i2c, uint8_t pinSDA, uint8_t pinSCL)
@@ -57,57 +56,10 @@ void TwoWire::begin(void) {
 
   LPI2C_MasterInit(lpi2c,&lpi2c_config,i2cclk);     
 
+  // IO MUX
+  pinPeripheral(_uc_pinSDA, 1U, FUN_I2C, 0xD8B0u);
+  pinPeripheral(_uc_pinSCL, 1U, FUN_I2C, 0xD8B0u);
 
-  //MOUX
-  PinDescription const *g_sdaPinDes = &g_APinDescription[_uc_pinSDA];
-  PinDescription const *g_sclPinDes = &g_APinDescription[_uc_pinSCL];
-
-  CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
-
-  IOMUXC_SetPinMux(
-    g_sdaPinDes->FUN_I2C.muxRegister,       
-    g_sdaPinDes->FUN_I2C.muxMode,
-    g_sdaPinDes->FUN_I2C.inputRegister,
-    g_sdaPinDes->FUN_I2C.inputDaisy,
-    g_sdaPinDes->FUN_I2C.configRegister,
-    1U);                                             /* Software Input On Field: Input Path is determined by functionality */
-   
-  IOMUXC_SetPinMux(
-    g_sclPinDes->FUN_I2C.muxRegister,       
-    g_sclPinDes->FUN_I2C.muxMode,
-    g_sclPinDes->FUN_I2C.inputRegister,
-    g_sclPinDes->FUN_I2C.inputDaisy,
-    g_sclPinDes->FUN_I2C.configRegister,
-    1U);                                          /* Software Input On Field: Input Path is determined by functionality */
-    
-  IOMUXC_SetPinConfig(
-    g_sdaPinDes->FUN_I2C.muxRegister,       
-    g_sdaPinDes->FUN_I2C.muxMode,
-    g_sdaPinDes->FUN_I2C.inputRegister,
-    g_sdaPinDes->FUN_I2C.inputDaisy,
-    g_sdaPinDes->FUN_I2C.configRegister,
-    0xD8B0u);                                 /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Enabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
-                                                 Pull / Keep Select Field: Pull
-                                                 Pull Up / Down Config. Field: 22K Ohm Pull Up
-                                                 Hyst. Enable Field: Hysteresis Disabled */
-  IOMUXC_SetPinConfig(
-    g_sclPinDes->FUN_I2C.muxRegister,       
-    g_sclPinDes->FUN_I2C.muxMode,
-    g_sclPinDes->FUN_I2C.inputRegister,
-    g_sclPinDes->FUN_I2C.inputDaisy,
-    g_sclPinDes->FUN_I2C.configRegister,
-    0xD8B0u);                                /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Enabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
-                                                 Pull / Keep Select Field: Pull
-                                                 Pull Up / Down Config. Field: 22K Ohm Pull Up
-                                                 Hyst. Enable Field: Hysteresis Disabled */
 }
 
 
@@ -140,56 +92,9 @@ void TwoWire::begin(uint8_t address, bool enableGeneralCall) {
 
   LPI2C_SlaveInit(lpi2c, &slaveConfig, i2cclk);  
 
-    //MOUX
-  PinDescription const *g_sdaPinDes = &g_APinDescription[_uc_pinSDA];
-  PinDescription const *g_sclPinDes = &g_APinDescription[_uc_pinSCL];
-
-  CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
-
-  IOMUXC_SetPinMux(
-    g_sdaPinDes->FUN_I2C.muxRegister,       
-    g_sdaPinDes->FUN_I2C.muxMode,
-    g_sdaPinDes->FUN_I2C.inputRegister,
-    g_sdaPinDes->FUN_I2C.inputDaisy,
-    g_sdaPinDes->FUN_I2C.configRegister,
-    1U);                                             /* Software Input On Field: Input Path is determined by functionality */
-   
-  IOMUXC_SetPinMux(
-    g_sclPinDes->FUN_I2C.muxRegister,       
-    g_sclPinDes->FUN_I2C.muxMode,
-    g_sclPinDes->FUN_I2C.inputRegister,
-    g_sclPinDes->FUN_I2C.inputDaisy,
-    g_sclPinDes->FUN_I2C.configRegister,
-    1U);                                          /* Software Input On Field: Input Path is determined by functionality */
-    
-  IOMUXC_SetPinConfig(
-    g_sdaPinDes->FUN_I2C.muxRegister,       
-    g_sdaPinDes->FUN_I2C.muxMode,
-    g_sdaPinDes->FUN_I2C.inputRegister,
-    g_sdaPinDes->FUN_I2C.inputDaisy,
-    g_sdaPinDes->FUN_I2C.configRegister,
-    0xD8B0u);                                 /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Enabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
-                                                 Pull / Keep Select Field: Pull
-                                                 Pull Up / Down Config. Field: 22K Ohm Pull Up
-                                                 Hyst. Enable Field: Hysteresis Disabled */
-  IOMUXC_SetPinConfig(
-    g_sclPinDes->FUN_I2C.muxRegister,       
-    g_sclPinDes->FUN_I2C.muxMode,
-    g_sclPinDes->FUN_I2C.inputRegister,
-    g_sclPinDes->FUN_I2C.inputDaisy,
-    g_sclPinDes->FUN_I2C.configRegister,
-    0xD8B0u);                                /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Enabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
-                                                 Pull / Keep Select Field: Pull
-                                                 Pull Up / Down Config. Field: 22K Ohm Pull Up
-                                                 Hyst. Enable Field: Hysteresis Disabled */
+   // IO MUX
+  pinPeripheral(_uc_pinSDA, 1U, FUN_I2C, 0xD8B0u);
+  pinPeripheral(_uc_pinSCL, 1U, FUN_I2C, 0xD8B0u);
 
    if(LPI2C1 == lpi2c){
       EnableIRQ(LPI2C1_IRQn);

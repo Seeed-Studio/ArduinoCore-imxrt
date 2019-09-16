@@ -111,6 +111,9 @@ void init( void )
     /* Update the core clock */
     SystemCoreClockUpdate();
 
+    /*allow io mux*/
+    CLOCK_EnableClock(kCLOCK_Iomuxc); 
+
     /* Set systick reload value to generate 1ms interrupt */
     if(SysTick_Config(SystemCoreClock / 1000U))
     {

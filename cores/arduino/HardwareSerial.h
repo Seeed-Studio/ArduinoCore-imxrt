@@ -17,15 +17,14 @@
 */
 
 #pragma once
-
+#include "Arduino.h"
 #include <inttypes.h>
 #include "Stream.h"
 #include "RingBuffer.h"
 #include "fsl_lpuart.h"
 #include "board.h"
 #include "system_MIMXRT1052.h"
-#include "pins_arduino.h"
-#include "fsl_iomuxc.h"
+
 
 /*  
 MSB (STOPBit[][])(DATA[][])(PARIRT[][][][])LSB

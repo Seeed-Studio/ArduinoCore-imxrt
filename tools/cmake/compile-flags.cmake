@@ -18,7 +18,7 @@ add_compile_flags(LD
         --gc-sections -Xlinker -static 
         -Xlinker -z -Xlinker muldefs -Xlinker -Map=output.map 
         -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
-        -T ${CMAKE_CURRENT_SOURCE_DIR}/variants/${BOARD}/flexspi_nor.ld -static
+        -T ${CMAKE_CURRENT_SOURCE_DIR}/variants/${BOARD}/flexspi_nor_arduino.ld -static
         # -Wl,--start-group 
         # -lm -lc -lgcc -lnosys   libfsl_bsp.a libarduinocore.a libfsl_xip_drivers.a libfsl_usb_drivers.a
         # -Wl,--end-group 

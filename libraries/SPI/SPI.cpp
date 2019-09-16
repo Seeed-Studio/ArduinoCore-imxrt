@@ -23,8 +23,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#include "Arduino.h"
 #include "SPI.h"
-#include <Arduino.h>
+#include "wiring_private.h"
 
 
 SPIClass::SPIClass(LPSPI_Type *lpspi, uint8_t uc_pinMISO, uint8_t uc_pinSCK, uint8_t uc_pinMOSI) : _settings(SPISettings(0, MSBFIRST, SPI_MODE0))
@@ -45,51 +46,13 @@ void SPIClass::begin()
 
   CLOCK_SetMux(kCLOCK_LpspiMux,1);   
   CLOCK_SetDiv(kCLOCK_LpspiDiv,5);    
+                                   
+ // IO MUX
+  pinPeripheral(_uc_pinMiso, 0U, FUN_SPI, 0x10B0U);
+  pinPeripheral(_uc_pinMosi, 0U, FUN_SPI, 0x10B0U);
+  pinPeripheral(_uc_pinSCK, 0U, FUN_SPI, 0x10B0U);
 
-    
-  PinDescription const *g_MISOPinDes = &g_APinDescription[_uc_pinMiso];
-  PinDescription const *g_MOSIPinDes = &g_APinDescription[_uc_pinMosi];
-  PinDescription const *g_SCKPinDes =  &g_APinDescription[_uc_pinSCK];
-    
-  IOMUXC_SetPinMux( 
-    g_MISOPinDes->FUN_SPI.muxRegister,       
-    g_MISOPinDes->FUN_SPI.muxMode,
-    g_MISOPinDes->FUN_SPI.inputRegister,
-    g_MISOPinDes->FUN_SPI.inputDaisy,
-    g_MISOPinDes->FUN_SPI.configRegister, 0);                                    
-  IOMUXC_SetPinMux(
-    g_MOSIPinDes->FUN_SPI.muxRegister,       
-    g_MOSIPinDes->FUN_SPI.muxMode,
-    g_MOSIPinDes->FUN_SPI.inputRegister,
-    g_MOSIPinDes->FUN_SPI.inputDaisy,
-    g_MOSIPinDes->FUN_SPI.configRegister, 0);                                    
-  IOMUXC_SetPinMux(
-    g_SCKPinDes->FUN_SPI.muxRegister,       
-    g_SCKPinDes->FUN_SPI.muxMode,
-    g_SCKPinDes->FUN_SPI.inputRegister,
-    g_SCKPinDes->FUN_SPI.inputDaisy,
-    g_SCKPinDes->FUN_SPI.configRegister, 0);        
-
-  IOMUXC_SetPinConfig( 
-    g_MISOPinDes->FUN_SPI.muxRegister,       
-    g_MISOPinDes->FUN_SPI.muxMode,
-    g_MISOPinDes->FUN_SPI.inputRegister,
-    g_MISOPinDes->FUN_SPI.inputDaisy,
-    g_MISOPinDes->FUN_SPI.configRegister, 0x10B0);                                    
-  IOMUXC_SetPinConfig(
-    g_MOSIPinDes->FUN_SPI.muxRegister,       
-    g_MOSIPinDes->FUN_SPI.muxMode,
-    g_MOSIPinDes->FUN_SPI.inputRegister,
-    g_MOSIPinDes->FUN_SPI.inputDaisy,
-    g_MOSIPinDes->FUN_SPI.configRegister, 0x10B0);                                    
-  IOMUXC_SetPinConfig(
-    g_SCKPinDes->FUN_SPI.muxRegister,       
-    g_SCKPinDes->FUN_SPI.muxMode,
-    g_SCKPinDes->FUN_SPI.inputRegister,
-    g_SCKPinDes->FUN_SPI.inputDaisy,
-    g_SCKPinDes->FUN_SPI.configRegister, 0x10B0);                                      
-
-    config(DEFAULT_SPI_SETTINGS);
+  config(DEFAULT_SPI_SETTINGS);
 }
 
 void SPIClass::init()

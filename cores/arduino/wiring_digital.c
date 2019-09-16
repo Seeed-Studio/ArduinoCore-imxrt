@@ -25,16 +25,11 @@
  */
 
 #include "Arduino.h"
-#include "fsl_common.h"
-#include "fsl_iomuxc.h"
-#include "fsl_gpio.h"
-#include "board.h"
-#include "pins_arduino.h"
+#include "wiring_private.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 /**
  * @description: Configures the specified pin to behave either as an input or an
  * output. See the description of (digital pins) for details on the functionality
@@ -45,29 +40,8 @@ extern "C" {
  * @return: Nothing
  */
 void pinMode(pin_size_t pinNumber, uint8_t pinMode) {
-   CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
-
-   IOMUXC_SetPinMux(
-      g_APinDescription[pinNumber].FUN_GPIO.muxRegister,        /* GPIO_AD_B0_09 is configured as GPIO1_IO09 */
-      g_APinDescription[pinNumber].FUN_GPIO.muxMode,
-      g_APinDescription[pinNumber].FUN_GPIO.inputRegister,
-      g_APinDescription[pinNumber].FUN_GPIO.inputDaisy,
-      g_APinDescription[pinNumber].FUN_GPIO.configRegister,
-      0U);                                          /* Software Input On Field: Input Path is determined by functionality */
-   IOMUXC_SetPinConfig(
-      g_APinDescription[pinNumber].FUN_GPIO.muxRegister,        /* GPIO_AD_B0_09 is configured as GPIO1_IO09 */
-      g_APinDescription[pinNumber].FUN_GPIO.muxMode,
-      g_APinDescription[pinNumber].FUN_GPIO.inputRegister,
-      g_APinDescription[pinNumber].FUN_GPIO.inputDaisy,
-      g_APinDescription[pinNumber].FUN_GPIO.configRegister,        /* GPIO_AD_B0_09 PAD functional properties : */
-      0x10B0U);                               /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Disabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
-                                                 Pull / Keep Select Field: Keeper
-                                                 Pull Up / Down Config. Field: 100K Ohm Pull Down
-                                                 Hyst. Enable Field: Hysteresis Disabled */
+    //IO MUX
+    pinPeripheral(pinNumber, 0U, FUN_GPIO, 0x10B0U);
 
     gpio_pin_config_t  led_config = {kGPIO_DigitalInput, 0, kGPIO_NoIntmode};  
     

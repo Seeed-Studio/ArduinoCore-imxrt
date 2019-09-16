@@ -40,10 +40,7 @@
 #include "Udp.h"
 #include "USBAPI.h"
 #include "WCharacter.h"
-#include "wiring_analog.h"
-#include "pins_arduino.h"
 #endif
-
 /* Standard C library includes */
 #include <stdlib.h>
 #include <stdint.h>
@@ -53,5 +50,9 @@
 
 // Misc Arduino core functions
 #include "Common.h"
+#include "WVariant.h"
+#include "wiring_analog.h"
+#include "pins_arduino.h"
+
 
 #endif

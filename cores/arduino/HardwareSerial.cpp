@@ -25,6 +25,7 @@
  */
 
 #include "HardwareSerial.h"
+#include "wiring_private.h"
 
 HardwareSerial Serial(LPUART1, LPUART1_IRQn, RX0, TX0);
 
@@ -86,51 +87,9 @@ void HardwareSerial::begin(unsigned long baud, uint16_t config)
 void HardwareSerial::init(unsigned long baud, uint16_t config)
 {
      // IO MUX
-  CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03u */
-
-  IOMUXC_SetPinMux(
-      g_APinDescription[_rx_pin].FUN_UART.muxRegister,
-      g_APinDescription[_rx_pin].FUN_UART.muxMode,           
-      g_APinDescription[_rx_pin].FUN_UART.inputRegister, 
-      g_APinDescription[_rx_pin].FUN_UART.inputDaisy,   
-      g_APinDescription[_rx_pin].FUN_UART.configRegister, 
-      0U);                                   /* Software Input On Field: Input Path is determined by functionality */
-  IOMUXC_SetPinMux(
-      g_APinDescription[_tx_pin].FUN_UART.muxRegister,
-      g_APinDescription[_tx_pin].FUN_UART.muxMode,           
-      g_APinDescription[_tx_pin].FUN_UART.inputRegister, 
-      g_APinDescription[_tx_pin].FUN_UART.inputDaisy,   
-      g_APinDescription[_tx_pin].FUN_UART.configRegister,       
-      0U);                                    /* Software Input On Field: Input Path is determined by functionality */
-  IOMUXC_SetPinConfig(
-      g_APinDescription[_rx_pin].FUN_UART.muxRegister,
-      g_APinDescription[_rx_pin].FUN_UART.muxMode,           
-      g_APinDescription[_rx_pin].FUN_UART.inputRegister, 
-      g_APinDescription[_rx_pin].FUN_UART.inputDaisy,   
-      g_APinDescription[_rx_pin].FUN_UART.configRegister,        
-      0x10B0u);                               /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Disabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
-                                                 Pull / Keep Select Field: Keeper
-                                                 Pull Up / Down Config. Field: 100K Ohm Pull Down
-                                                 Hyst. Enable Field: Hysteresis Disabled */
-  IOMUXC_SetPinConfig(
-      g_APinDescription[_tx_pin].FUN_UART.muxRegister,
-      g_APinDescription[_tx_pin].FUN_UART.muxMode,           
-      g_APinDescription[_tx_pin].FUN_UART.inputRegister, 
-      g_APinDescription[_tx_pin].FUN_UART.inputDaisy,   
-      g_APinDescription[_tx_pin].FUN_UART.configRegister,         
-      0x10B0u);                               /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Disabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Enabled
-                                                 Pull / Keep Select Field: Keeper
-                                                 Pull Up / Down Config. Field: 100K Ohm Pull Down
-                                                 Hyst. Enable Field: Hysteresis Disabled */
-
+    pinPeripheral(_tx_pin, 0U, FUN_UART, 0x10B0U);
+    pinPeripheral(_rx_pin, 0U, FUN_UART, 0x10B0U);
+  
     lpuart_config_t _config;
     /*
      * config.baudRate_Bps = 115200U;

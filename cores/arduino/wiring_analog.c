@@ -25,11 +25,9 @@
  */
  
 #include "Arduino.h"
+#include "wiring_private.h"
 #include "wiring_analog.h"
-#include "fsl_common.h"
-#include "fsl_iomuxc.h"
 #include "fsl_adc.h"
-#include "pins_arduino.h"
 #include "fsl_pwm.h"
 
 #ifdef __cplusplus
@@ -91,29 +89,8 @@ uint32_t analogRead(uint32_t pin)
         return 0;
     }
 
-    CLOCK_EnableClock(kCLOCK_Iomuxc);           /* iomuxc clock (iomuxc_clk_enable): 0x03U */
-
-   IOMUXC_SetPinMux(
-      g_pinDes->FUN_GPIO.muxRegister,       
-      g_pinDes->FUN_GPIO.muxMode,
-      g_pinDes->FUN_GPIO.inputRegister,
-      g_pinDes->FUN_GPIO.inputDaisy,
-      g_pinDes->FUN_GPIO.configRegister,
-      0U);                                          /* Software Input On Field: Input Path is determined by functionality */
-  IOMUXC_SetPinConfig(
-      g_pinDes->FUN_GPIO.muxRegister,       
-      g_pinDes->FUN_GPIO.muxMode,
-      g_pinDes->FUN_GPIO.inputRegister,
-      g_pinDes->FUN_GPIO.inputDaisy,
-      g_pinDes->FUN_GPIO.configRegister,      /* GPIO_AD_B1_11 PAD functional properties : */
-      0xB0u);                                 /* Slew Rate Field: Slow Slew Rate
-                                                 Drive Strength Field: R0/6
-                                                 Speed Field: medium(100MHz)
-                                                 Open Drain Enable Field: Open Drain Disabled
-                                                 Pull / Keep Enable Field: Pull/Keeper Disabled
-                                                 Pull / Keep Select Field: Keeper
-                                                 Pull Up / Down Config. Field: 100K Ohm Pull Down
-                                                 Hyst. Enable Field: Hysteresis Disabled */
+    //IO MUX
+    pinPeripheral(pin, 0U, FUN_GPIO, 0xB0u);
 
 
     adc_channel_config_t adcChannelConfigStruct;
