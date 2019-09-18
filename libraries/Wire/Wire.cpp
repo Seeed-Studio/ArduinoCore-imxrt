@@ -45,6 +45,7 @@ TwoWire::TwoWire(LPI2C_Type * i2c, uint8_t pinSDA, uint8_t pinSCL)
 void TwoWire::begin(void) {
   //Master Mode
   lpi2c_master_config_t lpi2c_config;
+  
 
   CLOCK_SetMux(kCLOCK_Lpi2cMux,0);   //LPI2C clock source is PLL3=60Mhz
   CLOCK_SetDiv(kCLOCK_Lpi2cDiv,5);   //Frequency division setting, frequency division value is 5+1, so LPI2C CLK=10Mhz
@@ -125,6 +126,16 @@ void TwoWire::end() {
  
 }
 
+void TwoWire::setClock(uint32_t clock)
+{
+  uint32_t i2cclk=((CLOCK_GetFreq(kCLOCK_Usb1PllClk)/8)/(5+1)); 
+    
+  LPI2C_MasterEnable(lpi2c, false);
+  LPI2C_MasterSetBaudRate(lpi2c, i2cclk, clock);
+  LPI2C_MasterEnable(lpi2c, true);
+  
+}
+
 uint8_t TwoWire::requestFrom(uint8_t address, size_t quantity, bool stopBit)
 {
   if(quantity == 0)
@@ -144,9 +155,12 @@ uint8_t TwoWire::requestFrom(uint8_t address, size_t quantity, bool stopBit)
   {
     return 0;
   }
+  if (stopBit)
+  {
+    LPI2C_MasterStop(lpi2c);
+  }    
 
   rxBuffer._iHead = quantity;
-
   return rxBuffer._iHead;
 }
 
@@ -166,18 +180,33 @@ void TwoWire::beginTransmission(uint8_t address) {
 
 uint8_t TwoWire::endTransmission(bool stopBit)
 {
-   transmissionBegun = false ;
-
-   /* Master start and send address to slave. */
+  transmissionBegun = false ;
+ 
+  LPI2C_MasterClearStatusFlags(lpi2c, kLPI2C_MasterNackDetectFlag);
+    
   if(LPI2C_MasterStart(lpi2c, txAddress, kLPI2C_Write) != kStatus_Success)
   {
-    return 1;
-  };
+    LPI2C_MasterStop(lpi2c);
+    return 2;
+  }
+
+  delayMicroseconds(400); // wait 400 us for get a ack flag
+    
+  if(lpi2c->MSR & kLPI2C_MasterNackDetectFlag)
+  {
+    return 2;
+  } 
+
 
   if(LPI2C_MasterSend(lpi2c, txBuffer._aucBuffer, txBuffer.available()) != kStatus_Success)
   {
-    return 1;
+    return 3;
   }
+
+  if (stopBit)
+  {
+    LPI2C_MasterStop(lpi2c);
+  }   
 
   return 0;
   
