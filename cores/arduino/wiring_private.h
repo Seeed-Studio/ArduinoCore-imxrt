@@ -37,7 +37,7 @@ extern "C" {
                      g_APinDescription[x].y.inputRegister,\
                      g_APinDescription[x].y.inputDaisy,\
                      g_APinDescription[x].y.configRegister,\
-                     0U)
+                     z)
 #define SetPinConfig(x, y, z) IOMUXC_SetPinConfig(g_APinDescription[x].y.muxRegister,\
                      g_APinDescription[x].y.muxMode,\
                      g_APinDescription[x].y.inputRegister,\

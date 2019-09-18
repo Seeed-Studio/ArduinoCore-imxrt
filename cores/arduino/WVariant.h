@@ -48,23 +48,6 @@ typedef struct _MuxConfig
     uint32_t configRegister;
 } MuxConfig;
 
-typedef enum _EPioType
-{
-  PIO_NOT_A_PIN=-1,          
-  PIO_ANALOG,                    
-  PIO_UART,
-  PIO_PWM,
-  PIO_TIMER,
-  PIO_I2C,
-  PIO_SPI,
-  PIO_CAN,
-  PIO_SAI,
-  PIO_ENET,
-  PIO_CSI,
-  PIO_SPDIF,
-      
-} EPioType ;
-
 typedef struct _PinDescription {
   GPIO_Type*  GROUP;
   uint32_t PIN;
