@@ -88,8 +88,8 @@ compiler.S.extra_flags=
 compiler.ar.extra_flags=
 compiler.elf2hex.extra_flags=
 
-compiler.arm.cmsis.c.flags="-I{runtime.tools.nxp-imxrt-sdk.path}/CMSIS-NXP/Include/" 
-compiler.arm.cmsis.ldflags="-L{runtime.tools.nxp-imxrt-sdk.path}/CMSIS-NXP/Lib/GCC/"  -larm_cortexM7lfdp_math -larm_cortexM7lfsp_math
+compiler.arm.cmsis.c.flags="-I{runtime.tools.CMSIS-IMXRT.path}/Include/" 
+compiler.arm.cmsis.ldflags="-L{runtime.tools.CMSIS-IMXRT.path}/Lib/GCC/"  -larm_cortexM7lfdp_math -larm_cortexM7lfsp_math
 
 compiler.sdk.ldflags=-Wl,--whole-archive  "{runtime.platform.path}/tools/lib/{build.processor}/libfsl_usb_drivers.a"  "{runtime.platform.path}/tools/lib/{build.processor}/libfsl_bsp.a" -Wl,--no-whole-archive
 
