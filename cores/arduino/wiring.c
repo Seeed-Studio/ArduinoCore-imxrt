@@ -91,6 +91,27 @@ void delay( unsigned long ms )
   }
 }
 
+void delayMicroseconds(unsigned int us)
+{
+  if (us == 0)
+  {
+    return;
+  }
+
+  uint32_t start = micros();
+
+  while (us > 0)
+  {
+    yield();
+    while (us > 0 && (micros() - start) >= 1)
+    {
+      us--;
+      start += 1;
+    }
+  }
+}
+
+
 /*
  * Seeeduion Arch Mix(NPX RT1052) initialization
  *
