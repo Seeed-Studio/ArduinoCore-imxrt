@@ -27,11 +27,13 @@ menu.debug=Debug
 # ------------------------------
 seeed_arch_mix.name=Seeed Arch Mix
 seeed_arch_mix.vid.0=0x2886
-seeed_arch_mix.pid.0=0x002B
+seeed_arch_mix.pid.0=0x0100
+seeed_arch_mix.vid.1=0x2886
+seeed_arch_mix.pid.1=0x8100
 seeed_arch_mix.upload.tool=bossac
 seeed_arch_mix.upload.protocol=sam-ba
-seeed_arch_mix.upload.maximum_size=66575360
-seeed_arch_mix.upload.offset=0x80000
+seeed_arch_mix.upload.maximum_size=8323072
+seeed_arch_mix.upload.offset=0x10000
 seeed_arch_mix.upload.use_1200bps_touch=false
 seeed_arch_mix.upload.wait_for_upload_port=false
 seeed_arch_mix.upload.native_usb=true
