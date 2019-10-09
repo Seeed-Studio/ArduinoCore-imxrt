@@ -27,9 +27,9 @@ menu.debug=Debug
 # ------------------------------
 seeed_arch_mix.name=Seeed Arch Mix
 seeed_arch_mix.vid.0=0x2886
-seeed_arch_mix.pid.0=0x0100
+seeed_arch_mix.pid.0=0x002B
 seeed_arch_mix.vid.1=0x2886
-seeed_arch_mix.pid.1=0x8100
+seeed_arch_mix.pid.1=0x802B
 seeed_arch_mix.upload.tool=bossac
 seeed_arch_mix.upload.protocol=sam-ba
 seeed_arch_mix.upload.maximum_size=8323072
