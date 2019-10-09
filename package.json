@@ -1,0 +1,6 @@
+{
+    "name": "framework-arduinoimxrt",
+    "description": "Arduino Wiring-based Framework (i.MX RT Cores)",
+    "url": "https://github.com/Seeed-Studio/ArduinoCore-imxrt",
+    "version": "1.0.0"
+}
