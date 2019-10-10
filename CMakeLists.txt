@@ -46,7 +46,9 @@ FILE(GLOB_RECURSE ASSEMBLY_FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/variants/${BOARD}/*.S"
     )
 
-add_source_files(${CMAKE_CURRENT_SOURCE_DIR}/variants/${BOARD}/variant.c)
+add_source_files(${CMAKE_CURRENT_SOURCE_DIR}/variants/${BOARD}/variant.c
+                 ${CMAKE_CURRENT_SOURCE_DIR}/variants/${BOARD}/board/*.c
+                )
 
             
 SET_PROPERTY(SOURCE ${ASSEMBLY_FILES} PROPERTY LANGUAGE C)

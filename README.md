@@ -26,7 +26,7 @@ mkdir -p examples/Blink
 touch  examples/Blink/Blink.ino  #You can write your own arduino code here
 mkdir build && cd build
 # Make sure you cross-compile the toolchain with the correct path
-cmake .. -DPROJ=Blink -DTOOLCHAIN=/opt/gcc-arm-none-eabi-8.2/bin -DBOARD=arch_mix
+cmake .. -DPROJ=Blink -DTOOLCHAIN=/opt/gcc-arm-none-eabi-8.2/bin -DBOARD=arch_mix -DMCU=MIMXRT1052
 ```
 
 

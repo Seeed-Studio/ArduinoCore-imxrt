@@ -34,14 +34,14 @@ version=1.0.0
 
 # compiler include path
 #----------------------
-compiler.sdk.path={runtime.tools.nxp-imxrt-sdk.path}/{build.processor}
+compiler.sdk.path={runtime.platform.path}/tools/sdk/devices/{build.processor}
 compiler.cores.path={runtime.platform.path}/cores/arduino
 compiler.cores.deprecated.path={runtime.platform.path}/cores/arduino/deprecated/
 compiler.cores.deprecated-avr-comp.path={runtime.platform.path}/cores/arduino/deprecated-avr-comp/
 
-compiler.cores.usb.include=-I{runtime.platform.path}/cores/arduino/USB -I{runtime.tools.nxp-imxrt-sdk.path}/middleware/usb/include -I{runtime.tools.nxp-imxrt-sdk.path}/middleware/usb/osa -I{runtime.tools.nxp-imxrt-sdk.path}/middleware/usb/host -I{runtime.tools.nxp-imxrt-sdk.path}/middleware/usb/phy -I{runtime.tools.nxp-imxrt-sdk.path}/middleware/usb/device
-compiler.sdk.include=-I{compiler.sdk.path} -I{compiler.sdk.path}/drivers -I{compiler.sdk.path}/utilities/debug_console -I{runtime.tools.nxp-imxrt-sdk.path}/components/serial_manager 
-compiler.preproc.include={compiler.cores.usb.include} {compiler.sdk.include} -I{compiler.cores.path} -I{compiler.cores.deprecated.path} -I{compiler.cores.deprecated-avr-comp.path} 
+compiler.cores.usb.include=-I{runtime.platform.path}/cores/arduino/USB -I{runtime.platform.path}/tools/sdk/middleware/usb/include -I{runtime.platform.path}/tools/sdk/middleware/usb/osa -I{runtime.platform.path}/tools/sdk/middleware/usb/host -I{runtime.platform.path}/tools/sdk/middleware/usb/phy -I{runtime.platform.path}/tools/sdk/middleware/usb/device
+compiler.sdk.include=-I{compiler.sdk.path} -I{compiler.sdk.path}/drivers -I{compiler.sdk.path}/utilities/debug_console -I{runtime.platform.path}/tools/sdk/components/serial_manager 
+compiler.preproc.include={compiler.cores.usb.include} {compiler.sdk.include} -I{compiler.cores.path} -I{compiler.cores.deprecated.path} -I{compiler.cores.deprecated-avr-comp.path} -I{build.variant.path}/board -I{build.variant.path}/xip 
 
 # Compile variables
 # -----------------
@@ -88,8 +88,8 @@ compiler.S.extra_flags=
 compiler.ar.extra_flags=
 compiler.elf2hex.extra_flags=
 
-compiler.arm.cmsis.c.flags="-I{runtime.tools.CMSIS-IMXRT.path}/Include/" 
-compiler.arm.cmsis.ldflags="-L{runtime.tools.CMSIS-IMXRT.path}/Lib/GCC/"  -larm_cortexM7lfdp_math -larm_cortexM7lfsp_math
+compiler.arm.cmsis.c.flags="-I{runtime.platform.path}/tools/sdk/CMSIS/Include/" 
+compiler.arm.cmsis.ldflags="-L{runtime.platform.path}/tools/sdk/CMSIS/Lib/GCC/"  -larm_cortexM7lfdp_math -larm_cortexM7lfsp_math
 
 compiler.sdk.ldflags=-Wl,--whole-archive  "{runtime.platform.path}/tools/lib/{build.processor}/libfsl_usb_drivers.a"  "{runtime.platform.path}/tools/lib/{build.processor}/libfsl_bsp.a" -Wl,--no-whole-archive
 
@@ -135,9 +135,9 @@ tools.bossac.cmd.windows=bossac.exe
 
 tools.bossac.upload.params.verbose=-i -d
 tools.bossac.upload.params.quiet=
-tools.bossac.upload.pattern="{path}/{cmd}" --port={serial.port.file} -i -e -w -v "{build.path}/{build.project_name}.bin" -R
+tools.bossac.upload.pattern="{path}/{cmd}" --port={serial.port.file} -i -w -v "{build.path}/{build.project_name}.bin" -R
 
-tools.bossac_remote.upload.pattern=/usr/bin/run-bossac  --port=ttyATH0  -e -w -v /tmp/sketch.bin -R
+tools.bossac_remote.upload.pattern=/usr/bin/run-bossac  --port=ttyATH0 -w -v /tmp/sketch.bin -R
 
 tools.bossac.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
 tools.bossac.upload.network_pattern="{network_cmd}" -address {serial.port} -port 65280 -username arduino -password "{network.password}" -sketch "{build.path}/{build.project_name}.bin" -upload /sketch -b
