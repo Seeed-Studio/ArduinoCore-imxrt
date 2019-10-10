@@ -71,6 +71,8 @@ extern "C"
 #define USER_LED_G 31U
 #define USER_LED_B 32U
 
+#define LED_BUILTIN USER_LED_G
+
 #define RX0  J3_19
 #define TX0  J3_20
 
