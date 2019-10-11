@@ -43,7 +43,6 @@
     defined(FSL_FEATURE_USB_KHCI_USB_RAM) && (FSL_FEATURE_USB_KHCI_USB_RAM > 0U)
 extern uint8_t USB_EnterLowpowerMode(void);
 #endif
-#include "pin_mux.h"
 /*******************************************************************************
 * Definitions
 ******************************************************************************/
@@ -73,6 +72,7 @@ usb_cdc_vcom_struct_t s_cdcVcom;
 /* Data buffer for receiving and sending*/
 USB_DMA_NONINIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static uint8_t s_currRecvBuf[DATA_BUFF_SIZE];
 volatile static uint32_t s_recvSize = 0;
+volatile static uint32_t s_waitForDataSend = 0;
 
 /* Line coding of cdc device */
 USB_DMA_INIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static uint8_t s_lineCoding[LINE_CODING_SIZE] = {
@@ -196,6 +196,7 @@ usb_status_t USB_DeviceCdcVcomCallback(class_handle_t handle, uint32_t event, vo
                  */
                 error = USB_DeviceCdcAcmSend(handle, USB_CDC_VCOM_BULK_IN_ENDPOINT, NULL, 0);
             } 
+					 s_waitForDataSend = 1;
         }
         break;
         case kUSB_DeviceCdcEventRecvResponse:
@@ -536,10 +537,12 @@ uint32_t vcom_read_buf(void* data, uint32_t length)
 
 status_t vcom_write_buf(void* data, uint32_t length)
 {
-
 	if((1 == s_cdcVcom.attach) && (1 == s_cdcVcom.startTransactions)){
+		  s_waitForDataSend = 0;
 			if( kStatus_USB_Success ==  USB_DeviceCdcAcmSend(s_cdcVcom.cdcAcmHandle, USB_CDC_VCOM_BULK_IN_ENDPOINT, (uint8_t *)data, length))
 			{
+				while(!s_waitForDataSend){
+				}
 				return 1;
 			}
   }		
@@ -557,7 +560,7 @@ void APPTask()
 	{
 		vcom_write_buf(buff, s_recvSize);
 
-			PRINTF("s_recving£º%d\r\n", s_recvSize);
+			PRINTF("s_recving:%d\r\n", s_recvSize);
 			s_recvSize = 0;
 	}
 	

@@ -14,7 +14,8 @@
 #include "clock_config.h"
 #include "fsl_common.h"
 #include "virtual_com.h"
-#include "imrxt_uf2_monitor.h"
+#include "imrxt_ba_monitor.h"
+#include "board_drive_led.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -33,9 +34,17 @@ dev devInfo = {
  
 extern void JumpToApp(uint32_t address);
 
-void BOOTLOADER_WDOG_IRQHandler(void)
+void KEY_init()
 {
-  WDOG_ClearInterruptStatus(BOOTLOADER_WDOG_BASE, kWDOG_InterruptFlag);
+
+	IOMUXC_SetPinMux(
+      IOMUXC_SNVS_WAKEUP_GPIO5_IO00,        
+      0U);                                   
+  IOMUXC_SetPinConfig(
+      IOMUXC_SNVS_WAKEUP_GPIO5_IO00,       
+      0x10B0U);     
+  gpio_pin_config_t key_config = {kGPIO_DigitalInput, 0, kGPIO_NoIntmode};
+	GPIO_PinInit(GPIO5, 0, &key_config);	  	
 }
 
 void writeStatus(uint32_t magic)
@@ -44,7 +53,7 @@ void writeStatus(uint32_t magic)
 		status = flexspi_nor_flash_erase_sector(BOOTLOADER_FLEXSPI, BOOTLOADER_DATA_AREA * SECTOR_SIZE);
     if (status != kStatus_Success)
     {
-       PRINTF("Erase sector failure !\r\n");
+       //PRINTF("Erase sector failure !\r\n");
        return ;
     }
 		
@@ -54,7 +63,7 @@ void writeStatus(uint32_t magic)
                                             (void *)&devInfo, 40);
     if (status != kStatus_Success)
     {
-        PRINTF("Page program failure !\r\n");
+        //PRINTF("Page program failure !\r\n");
         return ;
     }
 }
@@ -73,12 +82,12 @@ void call_application(uint32_t address)
 	/* Rebase the Stack Pointer */
   __set_MSP(*(uint32_t *) vector);
 	
-	SystemInit();
+	//SystemInit();
 	
 	__enable_irq();
 	
 	 /* Load the Reset Handler address of the application */
-  uint32_t  app_start_address = vector + 0x401;
+  uint32_t  app_start_address = vector + 0x4b5;  // jump to reset handle address
 
   /* Jump to application Reset Handler in the application */
   JumpToApp(app_start_address);
@@ -87,45 +96,44 @@ void call_application(uint32_t address)
 
 void check_application()
 {
-	
-	 if(BOOT_STATUS_MAGIC == BOOT_STATUS_DATA)
+	// write board information to flash
+	 if(BOOT_STATUS_MAGIC != BOOT_STATUS_DATA)
 	 {
-		 writeStatus(0x00);
-		 usb_echo("BOOTLOADER MODE\r\n");
-		 return;
-	 }else{
 		 writeStatus(BOOT_STATUS_MAGIC);
-		 usb_echo("APP MODE\r\n");
-		 call_application(APP_START_ADDRESS);
 	 }
-	 
-	 
-
-	 /*writeStatus(BOOT_STATUS_MAGIC);
-	 PRINTF("IS Mw !\r\n");
-	 for(uint32_t i = 0; i < 4096; i++)
-		 for(uint32_t j = 0; j < 102400; j++);
-	 
-	PRINTF("IS Masd !\r\n");
-	writeStatus(0x00);
-	 
-	call_application(APP_START_ADDRESS);*/
-	
+	 if(BOOT_STATUS_MAGIC == BOOT_BPS_DATA)
+	 {
+		 BOOT_BPS_DATA = 0x00;
+		 return;
+	 }
+	 if(GPIO_PinRead(GPIO5, 0) == 1) //undown go to application
+	 {
+		 call_application(APP_START_ADDRESS);
+		 
+	 }else{
+		 //stay in bootloader
+		 return;
+		 
+	 }
 }
 
 int main(void)
 {
-	
-	
 		BOARD_ConfigMPU();
     BOARD_InitPins();
     BOARD_BootClockRUN();
     BOARD_InitDebugConsole();
     SCB_DisableDCache();
-	  flexspi_hyper_flash_init();
-	
+	  flexspi_nor_flash_init(BOOTLOADER_FLEXSPI);
+	 // flexspi_nor_enable_quad_mode(BOOTLOADER_FLEXSPI);
+	  LED_init();
+	  LEDRX_init();
+	  LEDTX_init();
+	  LED_off();
+	  LEDRX_off();
+	  LEDTX_off();
 	  check_application();
-		
+
 	  vcom_cdc_init();
 	   
 	  imrxt_ba_monitor_init(IMRXT_BA_INTERFACE_USBCDC);

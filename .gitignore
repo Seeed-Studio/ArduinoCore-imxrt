@@ -1,3 +1,7 @@
 .vscode/
 build/
 examples/
+bootloaders/arch_mix/mdk/Objects/
+bootloaders/arch_mix/mdk/Listings/
+bootloaders/arch_mix/mdk/Listings/
+bootloaders/arch_mix/mdk/bootloader.uvguix.lht820

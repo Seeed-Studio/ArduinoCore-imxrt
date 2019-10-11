@@ -43,14 +43,14 @@
  */
 
 #include <string.h>
-#include "imrxt_uf2_monitor.h"
-#include "imrxt_uf2_cdc.h"
-#include "imrxt_uf2_flash.h"
+#include "imrxt_ba_monitor.h"
+#include "imrxt_ba_cdc.h"
+#include "imrxt_ba_flash.h"
 #include "board_drive_led.h"
 #include "app.h"
 #include <stdlib.h>
 
-const char RomBOOT_Version[] = IMRXT_UF2_VERSION;
+const char RomBOOT_Version[] = IMRXT_BA_VERSION;
 const char RomBOOT_ExtendedCapabilities[] = "[Arduino:Z]";
 
 /* Provides one common interface to handle both USART and USB-CDC */
@@ -72,7 +72,7 @@ typedef struct
   uint32_t (*getdata_xmd)(void* data, uint32_t length);
 } t_monitor_if;
 
-#if defined(IMRXT_UF2_USBCDC_ONLY)  ||  defined(IMRXT_UF2_BOTH_INTERFACES)
+#if defined(IMRXT_BA_USBCDC_ONLY)  ||  defined(IMRXT_BA_BOTH_INTERFACES)
 //Please note that USB doesn't use Xmodem protocol, since USB already includes flow control and data verification
 //Data are simply forwarded without further coding.
 const t_monitor_if usbcdc_if =
@@ -155,14 +155,14 @@ void imrxt_ba_monitor_init(uint8_t com_interface)
 }
 
 /*
- * Central IMRXT_UF2 monitor putdata function using the board LEDs
+ * Central IMRXT_BA monitor putdata function using the board LEDs
  */
 static uint32_t imrxt_ba_putdata(t_monitor_if* pInterface, void const* data, uint32_t length)
 {
 	uint32_t result ;
 
 	result=pInterface->putdata(data, length);
-	#ifdef _DEBUG_
+	#if _DEBUG_
 	usb_echo("send:");
 	uint8_t * ptr = (uint8_t *)data;
 	for(int i = 0; i < length; i++){
@@ -170,6 +170,7 @@ static uint32_t imrxt_ba_putdata(t_monitor_if* pInterface, void const* data, uin
 	}
 	usb_echo("\r\n");
   #endif
+	LEDRX_off();
 	LEDTX_on();
 	txLEDPulse = TX_RX_LED_PULSE_PERIOD;
 
@@ -177,7 +178,7 @@ static uint32_t imrxt_ba_putdata(t_monitor_if* pInterface, void const* data, uin
 }
 
 /*
- * Central IMRXT_UF2 monitor getdata function using the board LEDs
+ * Central IMRXT_BA monitor getdata function using the board LEDs
  */
 static uint32_t imrxt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t length)
 {
@@ -187,6 +188,7 @@ static uint32_t imrxt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t 
 
 	if (result)
 	{
+		LEDTX_off();
 		LEDRX_on();
 		rxLEDPulse = TX_RX_LED_PULSE_PERIOD;
 	}
@@ -195,14 +197,15 @@ static uint32_t imrxt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t 
 }
 
 /*
- * Central IMRXT_UF2 monitor putdata function using the board LEDs
+ * Central IMRXT_BA monitor putdata function using the board LEDs
  */
 static uint32_t imrxt_ba_putdata_xmd(t_monitor_if* pInterface, void const* data, uint32_t length)
 {
 	uint32_t result ;
 
 	result=pInterface->putdata_xmd(data, length);
-
+	
+  LEDRX_off();
 	LEDTX_on();
 	txLEDPulse = TX_RX_LED_PULSE_PERIOD;
 
@@ -210,7 +213,7 @@ static uint32_t imrxt_ba_putdata_xmd(t_monitor_if* pInterface, void const* data,
 }
 
 /*
- * Central IMRXT_UF2 monitor getdata function using the board LEDs
+ * Central IMRXT_BA monitor getdata function using the board LEDs
  */
 static uint32_t imrxt_ba_getdata_xmd(t_monitor_if* pInterface, void* data, uint32_t length)
 {
@@ -220,6 +223,7 @@ static uint32_t imrxt_ba_getdata_xmd(t_monitor_if* pInterface, void* data, uint3
 
 	if (result)
 	{
+		LEDTX_off();
 		LEDRX_on();
 		rxLEDPulse = TX_RX_LED_PULSE_PERIOD;
 	}
@@ -274,10 +278,13 @@ void imrxt_ba_putdata_term(uint8_t* data, uint32_t length)
 }
 
 
-extern void call_application(uint32_t adderss);
+extern void JumpToApp(uint32_t adderss);
 void call_applet(uint32_t address)
 {
-  call_application(address);
+	LEDRX_off();
+	LEDRX_off();
+	LED_off();
+	__NVIC_SystemReset();
 }
 
 uint32_t current_number;
@@ -307,7 +314,7 @@ static void imrxt_ba_monitor_loop(void)
 {
   length = imrxt_ba_getdata(ptr_monitor_if, data, 512);
   ptr = data;
-	#ifdef _DEBUG_
+	#if _DEBUG_
 	if(length != 0){
 		usb_echo("rec:");
 		for(int i = 0; i < length; i++){
@@ -357,6 +364,7 @@ static void imrxt_ba_monitor_loop(void)
         ptr--;
         //Do we expect more data ?
 				flash_size = current_number - j;
+			
         if(j<current_number)
           imrxt_ba_getdata_xmd(ptr_monitor_if, ptr_data, current_number-j);
 				
@@ -438,7 +446,7 @@ static void imrxt_ba_monitor_loop(void)
         // Note: the flash memory is erased in ROWS, that is in block of 4 pages.
         //       Even if the starting address is the last byte of a ROW the entire
         //       ROW is erased anyway.
-				#ifdef _DEBUG_
+				#if _DEBUG_
 				usb_echo("%X \r\n", current_number);
 				#endif
        
@@ -453,7 +461,7 @@ static void imrxt_ba_monitor_loop(void)
         // Syntax: Y[ROM_ADDR],[SIZE]#
         // Write the first SIZE bytes from the SRAM buffer (previously set) into
         // flash memory starting from address ROM_ADDR
-				#ifdef _DEBUG_
+				#if _DEBUG_
         usb_echo("%X \r\n", current_number);
 				#endif
 				break;
@@ -556,19 +564,18 @@ void imrxt_ba_monitor_sys_tick(void)
 }
 
 /**
- * \brief This function starts the IMRXT_UF2 monitor.
+ * \brief This function starts the IMRXT_BA monitor.
  */
 void imrxt_ba_monitor_run(void)
 {
 
   ptr_data = NULL;
   command = 'z';
-	
+	LED_on();
   while (1)
   {
    imrxt_ba_monitor_loop();
   }
-
 
 }
 

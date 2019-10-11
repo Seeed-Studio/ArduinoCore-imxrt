@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#include "imrxt_uf2_cdc.h"
+#include "imrxt_ba_cdc.h"
 
 
 
@@ -27,7 +27,7 @@ int cdc_putc(int value)
 	if(!cdc_is_rx_ready()){
 		return 0;
 	}
-	
+
   return vcom_write_buf(&value, 1);
 
 }
@@ -59,7 +59,7 @@ uint32_t cdc_write_buf(void const* data, uint32_t length)
 	}
 	
 	vcom_write_buf((void *)data, length);
-	
+
   return length;
 }
 
@@ -76,8 +76,8 @@ uint32_t cdc_read_buf_xmd(void* data, uint32_t length)
 	}
 
   char *dst = (char *)data;
-  uint32_t remaining = length;
-  while (remaining)
+  int32_t remaining = length;
+  while (remaining > 0)
   {
 		uint32_t readed = vcom_read_buf(dst, length);	
   

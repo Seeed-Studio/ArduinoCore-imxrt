@@ -34,12 +34,11 @@
 #ifndef _APP_H_
 #define _APP_H_
 
-#define _DEBUG_ 1
+#define _DEBUG_ 0
 
 /*${header:start}*/
 #include "fsl_flexspi.h"
 #include "fsl_cache.h"
-#include "fsl_wdog.h"
 /*${header:end}*/
 
 /*******************************************************************************
@@ -47,37 +46,41 @@
  ******************************************************************************/
 /*${macro:start}*/
 #define BOOTLOADER_FLEXSPI FLEXSPI
-#define FLASH_SIZE 0x10000
+#define FLASH_SIZE 8*1024u
 #define BOOTLOADER_FLEXSPI_AMBA_BASE FlexSPI_AMBA_BASE
-#define FLASH_PAGE_SIZE 512
-#define BOOTLOADER_DATA_AREA 1
-#define SECTOR_SIZE 0x40000
+#define FLASH_PAGE_SIZE 256
+#define BOOTLOADER_DATA_AREA 15
+#define SECTOR_SIZE 0x1000
 
 #define BOOTLOADER_FLEXSPI_CLOCK kCLOCK_FlexSpi
 
-#define FLASH_START_ADDRESS 0x60080000
-#define FLASH_MAX_LENGTH 0x64000000- FLASH_START_ADDRESS
+#define FLASH_START_ADDRESS 0x60010000
+#define FLASH_MAX_LENGTH 0x60800000- FLASH_START_ADDRESS
 
-#define APP_START_ADDRESS 0x60080000
+#define APP_START_ADDRESS 0x60010000
 #define BOOTLOADER_START_ADDRESS 0x60000000
 
-#define BOOTLOADER_WDOG_BASE WDOG1
-#define BOOTLOADER_WDOG_IRQHandler WDOG1_IRQHandler
+
+
+/*static variable*/
+#define BOOT_STATUS_ADDRESS           (0x6000F000 + 4*8)
+#define BOOT_STATUS_DATA              (*((volatile uint32_t *) BOOT_STATUS_ADDRESS))
+#define BOOT_STATUS_MAGIC							(0x424F4F54)
+
+/** Copied from bootloader. It will cause a "stay in bootloader" when doing 1200bps-touch */
+#define BOOT_BPS_ADDRESS         (0x20007FFCul)
+#define BOOT_BPS_DATA            (*((volatile uint32_t *) BOOT_BPS_ADDRESS))
 
 
 /*${macro:end}*/
-
-/*static variable*/
-#define BOOT_STATUS_ADDRESS           (0x60040000 + 4*8)
-#define BOOT_STATUS_DATA              (*((volatile uint32_t *) BOOT_STATUS_ADDRESS))
-#define BOOT_STATUS_MAGIC							(0x424F4F54)
 
 
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
 
-extern void flexspi_hyper_flash_init(void);
+extern int flexspi_nor_flash_init(FLEXSPI_Type *base);
+extern status_t flexspi_nor_enable_quad_mode(FLEXSPI_Type *base);
 extern status_t flexspi_nor_flash_erase_sector(FLEXSPI_Type *base, uint32_t address);
 extern status_t flexspi_nor_flash_page_program(FLEXSPI_Type *base, uint32_t address, const uint32_t *src);
 extern status_t flexspi_nor_flash_buffer_program(FLEXSPI_Type *base, uint32_t address, const uint32_t *src, uint32_t length);
@@ -101,7 +104,6 @@ typedef struct _dev_ {
 }	dev;
 
 /*${prototype:start}*/
-
 
 /*${prototype:end}*/
 

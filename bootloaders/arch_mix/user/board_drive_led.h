@@ -20,42 +20,35 @@
 #ifndef _BOARD_DRIVER_LED_H
 #define _BOARD_DRIVER_LED_H
 
+#include "app.h"
+#include "fsl_gpio.h"
+#include "fsl_iomuxc.h"
 
-#if defined(BOARD_LED_PORT)
-inline void LED_init(void) {  }
-inline void LED_on(void) { }
-inline void LED_off(void) { }
-inline void LED_toggle(void) {  }
-#else
-inline void LED_init(void) { }
-inline void LED_on(void) { }
-inline void LED_off(void) { }
-inline void LED_toggle(void) { }
-#endif
-void LED_pulse();
+#define IMRXT_BA_LED_GPIO  GPIO1
+#define IMRXT_BA_LED_GPIO_PIN (9U)
+#define IMRXT_BA_LEDRX_GPIO  GPIO1
+#define IMRXT_BA_LEDRX_GPIO_PIN (10U)
+#define IMRXT_BA_LEDTX_GPIO  GPIO1
+#define IMRXT_BA_LEDTX_GPIO_PIN (11U)
 
-#if defined(BOARD_LEDRX_PORT)
-inline void LEDRX_init(void) {  }
-inline void LEDRX_on(void) {  }
-inline void LEDRX_off(void) {  }
-inline void LEDRX_toggle(void) {  }
-#else
-inline void LEDRX_init(void) { }
-inline void LEDRX_on(void) { }
-inline void LEDRX_off(void) { }
-inline void LEDRX_toggle(void) { }
-#endif
 
-#if defined(BOARD_LEDTX_PORT)
-inline void LEDTX_init(void) {  }
-inline void LEDTX_on(void) {  }
-inline void LEDTX_off(void) { }
-inline void LEDTX_toggle(void) { }
-#else
-inline void LEDTX_init(void) { }
-inline void LEDTX_on(void) { }
-inline void LEDTX_off(void) { }
-inline void LEDTX_toggle(void) { }
-#endif
+
+void LED_init(void);
+void LED_on(void);
+void LED_off(void);
+void LED_toggle(void);
+
+
+void LEDRX_init(void);
+void LEDRX_on(void);
+void LEDRX_off(void);
+void LEDRX_toggle(void);
+
+
+void LEDTX_init(void);
+void LEDTX_on(void);
+void LEDTX_off(void);
+void LEDTX_toggle(void);
+
 
 #endif // _BOARD_DRIVER_LED_
