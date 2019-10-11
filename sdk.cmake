@@ -15,7 +15,14 @@ target_include_directories(fsl_xip_drivers PUBLIC
                     )
 
 
-add_lib_files(${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/middleware/usb/*.c)
+add_lib_files(${CMAKE_CURRENT_SOURCE_DIR}/cores/USB/*.c
+              ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/middleware/usb/*.c
+              ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/${MCU}/utilities/debug_console/*.c
+              ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/${MCU}/utilities/str/*.c
+              ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/serial_manager/serial_manager.c
+              ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/serial_manager/serial_port_uart.c
+              ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/uart/*.c
+)
 set(fsl_usb_drivers_files ${LIB_FILES})
 set(LIB_FILES "" CACHE STRING "Lib Files" FORCE)
 add_library(fsl_usb_drivers STATIC  ${fsl_usb_drivers_files})
@@ -29,7 +36,9 @@ target_include_directories(fsl_usb_drivers PUBLIC
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/middleware/usb/phy
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/middleware/usb/host
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/${MCU}/utilities/debug_console
+                    ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/devices/${MCU}/utilities/str
                     ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/serial_manager
+                    ${CMAKE_CURRENT_SOURCE_DIR}/tools/sdk/components/uart
                     ${CMAKE_CURRENT_SOURCE_DIR}/cores/arduino/USB
                     ${CMAKE_CURRENT_SOURCE_DIR}/cores/arduino
                     )

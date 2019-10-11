@@ -119,12 +119,30 @@ typedef struct _usb_cdc_acm_info
     uint16_t uartState;       /* UART state of the CDC device.                      */
 } usb_cdc_acm_info_t;
 
+/** Copied from bootloader. It will cause a "stay in bootloader" when doing 1200bps-touch */
+#define BOOT_STATUS_MAGIC	     (0x424F4F54)
+#define BOOT_BPS_ADDRESS         (0x20007FFCul)
+#define BOOT_BPS_DATA            (*((volatile uint32_t *) BOOT_BPS_ADDRESS))
+
+
+#if __cplusplus
+extern "C" {
+#endif
+
 void vcom_cdc_init(void);
+
+void CDC_IRQHandel();
+uint32_t  CDC_available();
 
 
 uint32_t vcom_read_buf(void* data, uint32_t length);
 status_t vcom_write_buf(void* data, uint32_t length);
-
+uint32_t vcom_read(uint32_t length);
+uint8_t vcom_get_recBuf(void* data);
 void APPTask(void);
+
+#if __cplusplus
+}
+#endif
 
 #endif /* _USB_CDC_VCOM_H_ */

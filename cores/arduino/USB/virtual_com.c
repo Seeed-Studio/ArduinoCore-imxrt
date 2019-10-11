@@ -72,6 +72,7 @@ usb_cdc_vcom_struct_t s_cdcVcom;
 /* Data buffer for receiving and sending*/
 USB_DMA_NONINIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static uint8_t s_currRecvBuf[DATA_BUFF_SIZE];
 volatile static uint32_t s_recvSize = 0;
+volatile static uint32_t s_waitForDataSend = 0;
 
 /* Line coding of cdc device */
 USB_DMA_INIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static uint8_t s_lineCoding[LINE_CODING_SIZE] = {
@@ -195,6 +196,7 @@ usb_status_t USB_DeviceCdcVcomCallback(class_handle_t handle, uint32_t event, vo
                  */
                 error = USB_DeviceCdcAcmSend(handle, USB_CDC_VCOM_BULK_IN_ENDPOINT, NULL, 0);
             } 
+					 s_waitForDataSend = 1;
         }
         break;
         case kUSB_DeviceCdcEventRecvResponse:
@@ -202,13 +204,13 @@ usb_status_t USB_DeviceCdcVcomCallback(class_handle_t handle, uint32_t event, vo
             if ((1 == s_cdcVcom.attach) && (1 == s_cdcVcom.startTransactions))
             {
                 s_recvSize = epCbParam->length;
-
+                CDC_IRQHandel();
                  if (!s_recvSize)
                 {
                     /* Schedule buffer for next receive event */
                     error = USB_DeviceCdcAcmRecv(handle, USB_CDC_VCOM_BULK_OUT_ENDPOINT, s_currRecvBuf,
                                                  g_UsbDeviceCdcVcomDicEndpoints[0].maxPacketSize);
-								}
+				}
             }
         }
         break;
@@ -282,7 +284,13 @@ usb_status_t USB_DeviceCdcVcomCallback(class_handle_t handle, uint32_t event, vo
 					 #endif
             if (1 == acmReqParam->isSetup)
             {
-                *(acmReqParam->buffer) = s_lineCoding;
+                if((s_lineCoding[0] == 0xB0) && (s_lineCoding[1] == 0x04) && (s_lineCoding[2] == 0x00) && (s_lineCoding[3] == 0x00))
+                {
+                    BOOT_BPS_DATA =  BOOT_STATUS_MAGIC;
+                    __NVIC_SystemReset();
+                }else{
+                    *(acmReqParam->buffer) = s_lineCoding;
+                }
             }
             else
             {
@@ -472,7 +480,6 @@ usb_status_t USB_DeviceCallback(usb_device_handle handle, uint32_t event, void *
 
     return error;
 }
-
 /*!
  * @brief Application initialization function.
  *
@@ -507,7 +514,33 @@ void vcom_cdc_init(void)
     USB_DeviceRun(s_cdcVcom.deviceHandle);
 }
 
+uint8_t vcom_get_recBuf(void* data)
+{
+    uint8_t length;
+   	if(s_recvSize != 0){
+		uint8_t * ptr = data;
+		for(uint32_t i = 0; i < s_recvSize; i++){
+		   *(ptr++) = s_currRecvBuf[i];
+        }
+	}
+    length = s_recvSize;
+    s_recvSize = 0;
+    return length;
+}
 
+uint32_t vcom_read(uint32_t length)
+{
+  usb_status_t error = kStatus_USB_Error;
+  if ((1 == s_cdcVcom.attach) && (1 == s_cdcVcom.startTransactions))
+  {
+   /* Schedule buffer for next receive event */
+    error = USB_DeviceCdcAcmRecv(s_cdcVcom.cdcAcmHandle, USB_CDC_VCOM_BULK_OUT_ENDPOINT, s_currRecvBuf, length);
+		if( kStatus_USB_Success != error){
+			return 0;
+		}
+  }		
+ 
+}
 uint32_t vcom_read_buf(void* data, uint32_t length)
 {
 	usb_status_t error = kStatus_USB_Error;
@@ -535,10 +568,12 @@ uint32_t vcom_read_buf(void* data, uint32_t length)
 
 status_t vcom_write_buf(void* data, uint32_t length)
 {
-
 	if((1 == s_cdcVcom.attach) && (1 == s_cdcVcom.startTransactions)){
+		  s_waitForDataSend = 0;
 			if( kStatus_USB_Success ==  USB_DeviceCdcAcmSend(s_cdcVcom.cdcAcmHandle, USB_CDC_VCOM_BULK_IN_ENDPOINT, (uint8_t *)data, length))
 			{
+				while(!s_waitForDataSend){
+				}
 				return 1;
 			}
   }		
@@ -556,7 +591,7 @@ void APPTask()
 	{
 		vcom_write_buf(buff, s_recvSize);
 
-			PRINTF("s_recving��%d\r\n", s_recvSize);
+			PRINTF("s_recving:%d\r\n", s_recvSize);
 			s_recvSize = 0;
 	}
 	

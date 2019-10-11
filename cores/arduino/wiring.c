@@ -169,5 +169,7 @@ void init( void )
     // waitting for ADC Auto Calibiration
     while (!(kStatus_Success == ADC_DoAutoCalibration(ADC1))){}
     while (!(kStatus_Success == ADC_DoAutoCalibration(ADC2))){}
+
+    vcom_cdc_init();
 }
 
