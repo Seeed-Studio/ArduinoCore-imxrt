@@ -66,7 +66,6 @@ void SPIClass::init()
 void SPIClass::config(SPISettings settings)
 {
     this->_settings = settings;
-    Serial.println(_settings.clockFreq);
     lpspi_master_config_t lpspi_config; 
 
     LPSPI_Deinit(_lpspi);
