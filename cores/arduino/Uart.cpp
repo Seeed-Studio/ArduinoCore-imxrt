@@ -24,10 +24,10 @@
  * THE SOFTWARE.
  */
 
-#include "HardwareSerial.h"
+#include "Uart.h"
 #include "wiring_private.h"
 
-HardwareSerial Serial(LPUART1, LPUART1_IRQn, RX0, TX0);
+UART Serial(LPUART1, LPUART1_IRQn, RX0, TX0);
 
 #define LPUART_CLK_FREQ BOARD_DebugConsoleSrcFreq()
 
@@ -45,7 +45,7 @@ void LPUART1_IRQHandler(void)
  * @param {type}
  * @return:
  */
-void HardwareSerial::LPUART_IRQHandel(void)
+void UART::LPUART_IRQHandel(void)
 {
     uint8_t data;
 
@@ -63,7 +63,7 @@ void HardwareSerial::LPUART_IRQHandel(void)
  * @param {type}
  * @return:
  */
-HardwareSerial::HardwareSerial(LPUART_Type * uart_num_ , IRQn_Type uart_num_IRQ, int rx_pin_, int tx_pin_)
+UART::UART(LPUART_Type * uart_num_ , IRQn_Type uart_num_IRQ, int rx_pin_, int tx_pin_)
 {
     _lpuart_num = uart_num_;
     _lpuart_num_IRQ = uart_num_IRQ;
@@ -76,7 +76,7 @@ HardwareSerial::HardwareSerial(LPUART_Type * uart_num_ , IRQn_Type uart_num_IRQ,
  * @param {type}
  * @return:
  */
-void HardwareSerial::begin(unsigned long baud, uint16_t config)
+void UART::begin(unsigned long baud, uint16_t config)
 {
     init(baud, config);
 
@@ -84,7 +84,7 @@ void HardwareSerial::begin(unsigned long baud, uint16_t config)
     _rb->clear();
 }
 
-void HardwareSerial::init(unsigned long baud, uint16_t config)
+void UART::init(unsigned long baud, uint16_t config)
 {
      // IO MUX
     pinPeripheral(_tx_pin, 0U, FUN_UART, 0x10B0U);
@@ -121,28 +121,28 @@ void HardwareSerial::init(unsigned long baud, uint16_t config)
  * @param {type}
  * @return:
  */
-void HardwareSerial::end() { delete _rb; }
+void UART::end() { delete _rb; }
 
 /**
  * @description:
  * @param {type}
  * @return:
  */
-int HardwareSerial::available(void) { return _rb->available(); }
+int UART::available(void) { return _rb->available(); }
 
 /**
  * @description:
  * @param {type}
  * @return:
  */
-int HardwareSerial::peek(void) { return _rb->peek(); }
+int UART::peek(void) { return _rb->peek(); }
 
 /**
  * @description:
  * @param {type}
  * @return:
  */
-int HardwareSerial::read(void) {
+int UART::read(void) {
     while (true) {
         if (0 != _rb->available()) {
             return _rb->read_char();
@@ -157,21 +157,16 @@ int HardwareSerial::read(void) {
  * @param {type}
  * @return:
  */
-void HardwareSerial::flush(void) { _rb->clear(); }
+void UART::flush(void) { _rb->clear(); }
 
 /**
  * @description:
  * @param {type}
  * @return:
  */
-size_t HardwareSerial::write(uint8_t c) { LPUART_WriteBlocking(_lpuart_num, &c, 1); return 1; }
+size_t UART::write(uint8_t c) { LPUART_WriteBlocking(_lpuart_num, &c, 1); return 1; }
 
-/**
- * @description:
- * @param {type}
- * @return:
- */
-HardwareSerial::operator bool() const { return true; }
+
 
 
 

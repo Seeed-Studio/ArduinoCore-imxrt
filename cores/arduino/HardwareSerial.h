@@ -16,14 +16,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#pragma once
-#include "Arduino.h"
+#ifndef HardwareSerial_h
+#define HardwareSerial_h
+
 #include <inttypes.h>
 #include "Stream.h"
-#include "RingBuffer.h"
-#include "fsl_lpuart.h"
-#include "board.h"
-#include "system_MIMXRT1052.h"
 
 
 /*  
@@ -62,31 +59,18 @@ MSB (STOPBit[][])(DATA[][])(PARIRT[][][][])LSB
 class HardwareSerial : public Stream
 {
   public:
-    void begin(unsigned long baudrate, uint16_t config = SERIAL_8N1);
-    void end();
-    int available(void);
-    int peek(void);
-    int read(void);
-    void flush(void);
-    size_t write(uint8_t);
+    virtual void begin(unsigned long) {}
+    virtual void begin(unsigned long, uint16_t) {}
+    virtual void end() {}
+    virtual int available(void) = 0;
+    virtual int peek(void) = 0;
+    virtual int read(void) = 0;
+    virtual void flush(void) = 0;
+    virtual size_t write(uint8_t) = 0;
     using Print::write; // pull in write(str) and write(buf, size) from Print
-    operator bool() const;
-    void LPUART_IRQHandel(void);
-    HardwareSerial(LPUART_Type * uart_num_ , IRQn_Type uart_num_IRQ, int rx_pin_, int tx_pin_);
-    ~HardwareSerial(){};
-  private:
-    void init(unsigned long baud, uint16_t config);
-    RingBuffer *_rb;
-    size_t read_timeout_ = 1000;
-    LPUART_Type * _lpuart_num;
-    IRQn_Type _lpuart_num_IRQ;
-    lpuart_handle_t g_lpuartHandle;
-    int _rx_pin;
-    int _tx_pin;
-
+    virtual operator bool() = 0;
 };
 
-// XXX: Are we keeping the serialEvent API?
 extern void serialEventRun(void) __attribute__((weak));
 
-extern HardwareSerial Serial;
+#endif
