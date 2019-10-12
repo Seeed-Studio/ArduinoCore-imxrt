@@ -27,7 +27,7 @@
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.6.x-package_index.json-format-specification
 
-name=Seeed IMXRT (NXP 32-bits ARM Cortex-M7) Boards
+name=Seeed i.MX RT (NXP 32-bits ARM Cortex-M7) Boards
 version=1.0.0
 
 
