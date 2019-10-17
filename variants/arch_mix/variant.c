@@ -59,7 +59,7 @@ const PinDescription g_APinDescription[]=
   },
   {   //ENET_RXD0 GPIO_B1_04 J3_9 #5
       .GROUP = GPIO2,
-      .PIN = 21,
+      .PIN = 20,
       .ADC = ADC2,
       .adcChannel = 9,
       .FUN_GPIO = {
@@ -103,7 +103,7 @@ const PinDescription g_APinDescription[]=
       .GROUP = GPIO2,
       .PIN = 26,
       .FUN_GPIO = {
-          IOMUXC_GPIO_B1_10_FLEXIO2_FLEXIO26
+          IOMUXC_GPIO_B1_10_GPIO2_IO26
       },
       .FUN_ENET= {
           IOMUXC_GPIO_B1_10_ENET_TX_CLK
