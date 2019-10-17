@@ -27,6 +27,9 @@
 #define PINS_ARDUINO_ARCH_MIX
 
 #include "WVariant.h"
+#include "fsl_lpuart.h"
+#include "fsl_common.h"
+#include "fsl_gpio.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -73,8 +76,25 @@ extern "C"
 
 #define LED_BUILTIN USER_LED_G
 
-#define RX0  J3_19
-#define TX0  J3_20
+#define UART_INTERFACES_COUNT 3
+
+#define PIN_UART1_RX      J3_19
+#define PIN_UART1_TX      J3_20
+#define UART1_NUM         LPUART1
+#define UART1_IRQn        LPUART1_IRQn
+#define UART1_HANDLER     LPUART1_IRQHandler
+
+#define PIN_UART2_RX      J4_11
+#define PIN_UART2_TX      J4_10
+#define UART2_NUM         LPUART8
+#define UART2_IRQn        LPUART8_IRQn
+#define UART2_HANDLER     LPUART8_IRQHandler
+
+#define PIN_UART3_RX      J4_17
+#define PIN_UART3_TX      J4_16
+#define UART3_NUM         LPUART2
+#define UART3_IRQn        LPUART2_IRQn
+#define UART3_HANDLER     LPUART2_IRQHandler
 
 #define AD2_9  J3_9
 #define AD2_10  J3_8

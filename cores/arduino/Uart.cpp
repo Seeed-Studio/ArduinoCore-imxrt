@@ -23,22 +23,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 #include "Uart.h"
 #include "wiring_private.h"
 
-UART Serial(LPUART1, LPUART1_IRQn, RX0, TX0);
-
 #define LPUART_CLK_FREQ BOARD_DebugConsoleSrcFreq()
 
-extern "C"{  // IRQHandler must be compiled in C
 
-void LPUART1_IRQHandler(void)
-{
-    Serial.LPUART_IRQHandel();
-}
-
-}
 
 /**
  * @description:
@@ -107,6 +97,7 @@ void UART::init(unsigned long baud, uint16_t config)
     _config.stopBitCount  = (lpuart_stop_bit_count_t)(config & 0xC0);
     _config.enableTx      = true;
     _config.enableRx      = true;
+
     
 
     LPUART_Init(_lpuart_num, &_config, LPUART_CLK_FREQ);
@@ -166,9 +157,33 @@ void UART::flush(void) { _rb->clear(); }
  */
 size_t UART::write(uint8_t c) { LPUART_WriteBlocking(_lpuart_num, &c, 1); return 1; }
 
-
-
-
+#if UART_INTERFACES_COUNT > 0
+UART Serial(UART1_NUM, UART1_IRQn, PIN_UART1_RX, PIN_UART1_TX);
+extern "C"{  // IRQHandler must be compiled in C
+void UART1_HANDLER(void)
+{
+    Serial.LPUART_IRQHandel();
+}
+}
+#endif
+#if UART_INTERFACES_COUNT > 1
+UART Serial1(UART2_NUM, UART2_IRQn, PIN_UART2_RX, PIN_UART2_TX);
+extern "C"{  // IRQHandler must be compiled in C
+void UART2_HANDLER(void)
+{
+    Serial1.LPUART_IRQHandel();
+}
+}
+#endif
+#if UART_INTERFACES_COUNT > 2
+UART Serial2(UART3_NUM, UART3_IRQn, PIN_UART3_RX, PIN_UART3_TX);
+extern "C"{  // IRQHandler must be compiled in C
+void UART3_HANDLER(void)
+{
+    Serial2.LPUART_IRQHandel();
+}
+}
+#endif
 
 
 

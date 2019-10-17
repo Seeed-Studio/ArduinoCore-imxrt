@@ -23,7 +23,18 @@
 // version 1.0.0
 #define ARDUINO_API_VERSION 10000
 
+/* Standard C library includes */
+#include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+#include <math.h>
 #include "Binary.h"
+// Misc Arduino core functions
+#include "Common.h"
+#include "WVariant.h"
+#include "wiring_analog.h"
+#include "pins_arduino.h"
 
 #ifdef __cplusplus
 #include "Client.h"
@@ -43,18 +54,5 @@
 #include "USBAPI.h"
 #include "WCharacter.h"
 #endif
-/* Standard C library includes */
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include <string.h>
-#include <math.h>
-
-// Misc Arduino core functions
-#include "Common.h"
-#include "WVariant.h"
-#include "wiring_analog.h"
-#include "pins_arduino.h"
-
 
 #endif

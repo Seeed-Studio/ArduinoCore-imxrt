@@ -49,7 +49,6 @@ void USBCDC::CDC_IRQHandel(void)
    length = vcom_get_recBuf(data);
    for(uint8_t i = 0; i < length; i++)
    {
-       Serial.write(data[i]);
        _rb->store_char(data[i]);
    }
 }

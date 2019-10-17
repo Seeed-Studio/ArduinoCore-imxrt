@@ -1,5 +1,5 @@
 #include "variant.h"
-
+#include "fsl_lpuart.h"
 /*
  * Pins descriptions
  */
@@ -9,7 +9,7 @@ const PinDescription g_APinDescription[]=
       .GROUP = GPIO2,
       .PIN = 27,
       .FUN_GPIO = {
-          IOMUXC_GPIO_AD_B1_11_GPIO1_IO27
+          IOMUXC_GPIO_B1_11_GPIO2_IO27
       },
       .FUN_ENET = {
           IOMUXC_GPIO_B1_11_ENET_RX_ER
@@ -248,11 +248,11 @@ const PinDescription g_APinDescription[]=
           IOMUXC_GPIO_AD_B1_09_FLEXPWM4_PWMA01
       },
       .FUN_SAI = {
-          IOMUXC_GPIO_AD_B1_10_SAI1_RX_SYNC
+          IOMUXC_GPIO_AD_B1_09_SAI1_MCLK
       },
-      .FUN_CSI= {
+      .FUN_CSI = {
           IOMUXC_GPIO_AD_B1_09_CSI_DATA08
-      }
+      },
   },
    {   //SAI1_RX_SYNC CSI_DATA07 GPIO_AD_B1_10 J4_10 #22
       .GROUP = GPIO1,
@@ -265,6 +265,9 @@ const PinDescription g_APinDescription[]=
       },
       .FUN_CSI= {
           IOMUXC_GPIO_AD_B1_10_CSI_DATA07
+      },
+      .FUN_UART ={
+          IOMUXC_GPIO_AD_B1_10_LPUART8_TX
       }
   },
    {   //SAI1_RX_BCLK CSI_DATA06 GPIO_AD_B1_11 J4_11 #23
@@ -278,6 +281,9 @@ const PinDescription g_APinDescription[]=
       },
       .FUN_CSI= {
           IOMUXC_GPIO_AD_B1_11_CSI_DATA06
+      },
+      .FUN_UART ={
+          IOMUXC_GPIO_AD_B1_11_LPUART8_RX
       }
   },
    {   //SAI1_RX_DATA00 CSI_DATA05 GPIO_AD_B1_12 J4_12 #24
@@ -341,7 +347,7 @@ const PinDescription g_APinDescription[]=
           IOMUXC_GPIO_AD_B1_15_CSI_DATA02
       }
   }, 
-   {   //SPDIF_OUT GPIO_AD_B1_02 J4_16 #28
+   {   //SPDIF_OUT LPUART2_TX GPIO_AD_B1_02 J4_16 #28
       .GROUP = GPIO1,
       .PIN = 18,
       .FUN_GPIO = {
@@ -349,9 +355,12 @@ const PinDescription g_APinDescription[]=
       },
       .FUN_SPDIF = {
           IOMUXC_GPIO_AD_B1_02_SPDIF_OUT
+      },
+      .FUN_UART = {
+          IOMUXC_GPIO_AD_B1_02_LPUART2_TX
       }
   },
-   {   //SPDIF_IN GPIO_AD_B1_03 J4_17 #29
+   {   //SPDIF_IN LPUART2_RX GPIO_AD_B1_03 J4_17 #29
       .GROUP = GPIO1,
       .PIN = 19,
       .FUN_GPIO = {
@@ -359,6 +368,9 @@ const PinDescription g_APinDescription[]=
       },
       .FUN_SPDIF = {
           IOMUXC_GPIO_AD_B1_03_SPDIF_IN
+      },
+      .FUN_UART = {
+          IOMUXC_GPIO_AD_B1_03_LPUART2_RX
       }
   },
    {   //USER_LED_R GPIO_AD_B0_08 #30

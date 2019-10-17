@@ -61,5 +61,12 @@ class UART : public HardwareSerial
     int _rx_pin;
     int _tx_pin;
 };
-
+#if UART_INTERFACES_COUNT > 0
 extern UART Serial;
+#endif
+#if UART_INTERFACES_COUNT > 1
+extern UART Serial1;
+#endif
+#if UART_INTERFACES_COUNT > 2
+extern UART Serial2;
+#endif
