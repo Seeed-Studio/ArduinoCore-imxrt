@@ -58,7 +58,7 @@ void pinMode(pin_size_t pinNumber, uint8_t pinMode) {
         break;
     case INPUT_PULLUP:
         led_config.outputLogic = 1;
-        _pinConfig =0x78B0U; 
+        _pinConfig =0xF0B0U; 
         break;
     case INPUT_PULLDOWN:
         led_config.outputLogic = 0;
