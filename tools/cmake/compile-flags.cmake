@@ -2,7 +2,7 @@ add_compile_flags(LD
         -DXIP_EXTERNAL_FLASH=1 
         -DXIP_BOOT_HEADER_ENABLE=1 
         -DNDEBUG 
-        -DCPU_MIMXRT1052DVL6B 
+        -DCPU_${CPU} 
         -Os 
         -Wall 
         -fno-common 
@@ -39,9 +39,9 @@ add_compile_flags(BOTH
             --param max-inline-insns-single=500
             -MMD  -MP
             -DNDEBUG
+            -DCPU_${CPU} 
             -DXIP_EXTERNAL_FLASH=1 
             -DXIP_BOOT_HEADER_ENABLE=1 
-            -DCPU_MIMXRT1052DVL6B 
             -DUSB_STACK_BM
             -DARDUINO_MAIN=1
             -mthumb -mapcs -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 

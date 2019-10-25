@@ -27,7 +27,6 @@
 #include "Arduino.h"
 #include "clock_config.h"
 #include "board.h"
-#include "system_MIMXRT1052.h"
 #include "fsl_adc.h"
 #include "fsl_xbara.h"
 #include "fsl_pwm.h"

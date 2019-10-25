@@ -33,7 +33,6 @@
 #include "RingBuffer.h"
 #include "fsl_lpuart.h"
 #include "board.h"
-#include "system_MIMXRT1052.h"
 #include "HardwareSerial.h"
 
 class USBCDC : public HardwareSerial

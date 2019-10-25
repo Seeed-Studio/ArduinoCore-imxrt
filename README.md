@@ -27,7 +27,7 @@ mkdir -p examples/Blink
 touch  examples/Blink/Blink.ino  #You can write your own arduino code here
 mkdir build && cd build
 # Make sure you cross-compile the toolchain with the correct path
-cmake .. -DPROJ=Blink -DTOOLCHAIN=/opt/gcc-arm-none-eabi-8.2/bin -DBOARD=arch_mix -DMCU=MIMXRT1052
+cmake .. -DPROJ=Blink -DTOOLCHAIN=~/gcc-arm-none-eabi/bin -DBOARD=arch_mix -DCPU=MIMXRT1062DVL6B
 ```
 ## Add the imxrt-based board to the platformIO
 
