@@ -31,6 +31,9 @@
 #include "fsl_common.h"
 #include "fsl_gpio.h"
 
+#define USB_VID 0x2886
+#define USB_PID 0x802B
+
 #ifdef __cplusplus
 extern "C"
 {

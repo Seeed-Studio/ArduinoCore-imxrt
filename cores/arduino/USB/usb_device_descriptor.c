@@ -5,6 +5,7 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+#include "Arduino.h"
 #include "usb_device_config.h"
 #include "usb.h"
 #include "usb_device.h"
@@ -89,9 +90,9 @@ uint8_t g_UsbDeviceDescriptor[] = {
     /* Maximum packet size for endpoint zero (only 8, 16, 32, or 64 are valid) */
     USB_CONTROL_MAX_PACKET_SIZE,
     /* Vendor ID (assigned by the USB-IF) */
-    0x86U, 0x28U,
+    USB_VID&0xFF, USB_VID>>8,
     /* Product ID (assigned by the manufacturer) */
-    0x2BU, 0x80U,
+    USB_PID&0xFF, USB_PID>>8,
     /* Device release number in binary-coded decimal */
     USB_SHORT_GET_LOW(USB_DEVICE_DEMO_BCD_VERSION), USB_SHORT_GET_HIGH(USB_DEVICE_DEMO_BCD_VERSION),
     /* Index of string descriptor describing manufacturer */
