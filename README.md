@@ -15,7 +15,7 @@ You need a Arduino IDE that after version 1.6.4, please download one if there's 
 Open your Arudino IDE, click on **File > Preferences**, and copy below url to *Additional Boards Manager URLs*
 
 ```
-https://raw.githubusercontent.com/Seeed-Studio/Seeed_Platform/master/package_seeeduino_boards_index.json
+https://files.seeedstudio.com/arduino/package_seeeduino_boards_index.json
 ```
 
 ## Build ArduinoCore-imxrt with cmake
