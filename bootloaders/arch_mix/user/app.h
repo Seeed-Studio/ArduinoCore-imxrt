@@ -34,7 +34,7 @@
 #ifndef _APP_H_
 #define _APP_H_
 
-#define _DEBUG_ 0
+//#define _DEBUG_ 1
 
 /*${header:start}*/
 #include "fsl_flexspi.h"
@@ -45,6 +45,7 @@
  * Definitions
  ******************************************************************************/
 /*${macro:start}*/
+#ifdef QSPI_FLASH
 #define BOOTLOADER_FLEXSPI FLEXSPI
 #define FLASH_SIZE 8*1024u
 #define BOOTLOADER_FLEXSPI_AMBA_BASE FlexSPI_AMBA_BASE
@@ -66,11 +67,29 @@
 #define BOOT_STATUS_ADDRESS           (0x6000F000 + 4*8)
 #define BOOT_STATUS_DATA              (*((volatile uint32_t *) BOOT_STATUS_ADDRESS))
 #define BOOT_STATUS_MAGIC							(0x424F4F54)
+#else
+#define BOOTLOADER_FLEXSPI FLEXSPI
+#define FLASH_SIZE 0x10000
+#define BOOTLOADER_FLEXSPI_AMBA_BASE FlexSPI_AMBA_BASE
+#define FLASH_PAGE_SIZE 512
+#define BOOTLOADER_DATA_AREA 1
+#define SECTOR_SIZE 0x40000
 
-/** Copied from bootloader. It will cause a "stay in bootloader" when doing 1200bps-touch */
-#define BOOT_BPS_ADDRESS         (0x20007FFCul)
-#define BOOT_BPS_DATA            (*((volatile uint32_t *) BOOT_BPS_ADDRESS))
+#define BOOTLOADER_FLEXSPI_CLOCK kCLOCK_FlexSpi
 
+#define FLASH_START_ADDRESS 0x60080000
+#define FLASH_MAX_LENGTH 0x64000000- FLASH_START_ADDRESS
+
+#define APP_START_ADDRESS 0x60080000
+#define BOOTLOADER_START_ADDRESS 0x60000000
+
+
+
+/*static variable*/
+#define BOOT_STATUS_ADDRESS           (0x60040000 + 4*8)
+#define BOOT_STATUS_DATA              (*((volatile uint32_t *) BOOT_STATUS_ADDRESS))
+#define BOOT_STATUS_MAGIC							(0x424F4F54)
+#endif
 
 /*${macro:end}*/
 

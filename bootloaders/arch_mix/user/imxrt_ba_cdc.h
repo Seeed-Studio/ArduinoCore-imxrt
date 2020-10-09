@@ -43,8 +43,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef _IMXRT_BA_USB_CDC_H_
-#define _IMXRT_BA_USB_CDC_H_
+#ifndef _IMRXT_BA_USB_CDC_H_
+#define _IMRXT_BA_USB_CDC_H_
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -101,4 +101,4 @@ uint32_t cdc_read_buf(void* data, uint32_t length);
  */
 uint32_t cdc_read_buf_xmd(void* data, uint32_t length);
 
-#endif // _IMXRT_BA_USB_CDC_H_
+#endif // _IMRXT_BA_USB_CDC_H_

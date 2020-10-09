@@ -91,7 +91,7 @@ uint8_t g_UsbDeviceDescriptor[] = {
     /* Vendor ID (assigned by the USB-IF) */
     0x86U, 0x28U,
     /* Product ID (assigned by the manufacturer) */
-    0x2BU, 0x00U,
+    0x00U, 0x01U,
     /* Device release number in binary-coded decimal */
     USB_SHORT_GET_LOW(USB_DEVICE_DEMO_BCD_VERSION), USB_SHORT_GET_HIGH(USB_DEVICE_DEMO_BCD_VERSION),
     /* Index of string descriptor describing manufacturer */

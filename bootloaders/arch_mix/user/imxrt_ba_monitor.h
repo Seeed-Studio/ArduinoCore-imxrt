@@ -42,23 +42,23 @@
  * THE SOFTWARE.
  */
 
-#ifndef _MONITOR_IMXRT_BA_H_
-#define _MONITOR_IMXRT_BA_H_
+#ifndef _MONITOR_IMRXT_BA_H_
+#define _MONITOR_IMRXT_BA_H_
 
-#define IMXRT_BA_VERSION              "1.0"
+#define IMRXT_BA_VERSION              "1.0"
 
 
 #include <stdio.h>
 #include <stdint.h>
 
-#if !defined(IMXRT_BA_BOTH_INTERFACES) &&  !defined(IMXRT_BA_UART_ONLY) && !defined(IMXRT_BA_USBCDC_ONLY)
-#define IMXRT_BA_BOTH_INTERFACES
+#if !defined(IMRXT_BA_BOTH_INTERFACES) &&  !defined(IMRXT_BA_UART_ONLY) && !defined(IMRXT_BA_USBCDC_ONLY)
+#define IMRXT_BA_BOTH_INTERFACES
 #endif
 
 /* Selects USB as the communication interface of the monitor */
-#define IMXRT_BA_INTERFACE_USBCDC     0
+#define IMRXT_BA_INTERFACE_USBCDC     0
 /* Selects USART as the communication interface of the monitor */
-#define IMXRT_BA_INTERFACE_USART      1
+#define IMRXT_BA_INTERFACE_USART      1
 
 /* Selects USB as the communication interface of the monitor */
 #define SIZEBUFMAX                  64
@@ -70,13 +70,13 @@
 void imxrt_ba_monitor_init(uint8_t com_interface);
 
 /**
- * \brief System tick function of the IMXRT_BA Monitor
+ * \brief System tick function of the IMRXT_BA Monitor
  *
  */
 void imxrt_ba_monitor_sys_tick(void);
 
 /**
- * \brief Main function of the IMXRT_BA Monitor
+ * \brief Main function of the IMRXT_BA Monitor
  *
  */
 void imxrt_ba_monitor_run(void);
@@ -93,4 +93,4 @@ void imxrt_ba_putdata_term(uint8_t* data, uint32_t length);
  */
 void call_applet(uint32_t address);
 
-#endif // _MONITOR_IMXRT_BA_H_
+#endif // _MONITOR_IMRXT_BA_H_

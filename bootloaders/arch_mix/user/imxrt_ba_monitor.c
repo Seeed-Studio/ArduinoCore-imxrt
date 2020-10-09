@@ -50,7 +50,7 @@
 #include "app.h"
 #include <stdlib.h>
 
-const char RomBOOT_Version[] = IMXRT_BA_VERSION;
+const char RomBOOT_Version[] = IMRXT_BA_VERSION;
 const char RomBOOT_ExtendedCapabilities[] = "[Arduino:Z]";
 
 /* Provides one common interface to handle both USART and USB-CDC */
@@ -72,7 +72,7 @@ typedef struct
   uint32_t (*getdata_xmd)(void* data, uint32_t length);
 } t_monitor_if;
 
-#if defined(IMXRT_BA_USBCDC_ONLY)  ||  defined(IMXRT_BA_BOTH_INTERFACES)
+#if defined(IMRXT_BA_USBCDC_ONLY)  ||  defined(IMRXT_BA_BOTH_INTERFACES)
 //Please note that USB doesn't use Xmodem protocol, since USB already includes flow control and data verification
 //Data are simply forwarded without further coding.
 const t_monitor_if usbcdc_if =
@@ -148,21 +148,21 @@ volatile uint16_t rxLEDPulse = 0; // time remaining for Rx LED pulse
 
 void imxrt_ba_monitor_init(uint8_t com_interface)
 {
-  if (com_interface == IMXRT_BA_INTERFACE_USBCDC)
+  if (com_interface == IMRXT_BA_INTERFACE_USBCDC)
   {
     ptr_monitor_if = (t_monitor_if*) &usbcdc_if;
   }
 }
 
 /*
- * Central IMXRT_BA monitor putdata function using the board LEDs
+ * Central IMRXT_BA monitor putdata function using the board LEDs
  */
 static uint32_t imxrt_ba_putdata(t_monitor_if* pInterface, void const* data, uint32_t length)
 {
 	uint32_t result ;
 
 	result=pInterface->putdata(data, length);
-	#if _DEBUG_
+	#ifdef _DEBUG_
 	usb_echo("send:");
 	uint8_t * ptr = (uint8_t *)data;
 	for(int i = 0; i < length; i++){
@@ -178,7 +178,7 @@ static uint32_t imxrt_ba_putdata(t_monitor_if* pInterface, void const* data, uin
 }
 
 /*
- * Central IMXRT_BA monitor getdata function using the board LEDs
+ * Central IMRXT_BA monitor getdata function using the board LEDs
  */
 static uint32_t imxrt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t length)
 {
@@ -197,7 +197,7 @@ static uint32_t imxrt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t 
 }
 
 /*
- * Central IMXRT_BA monitor putdata function using the board LEDs
+ * Central IMRXT_BA monitor putdata function using the board LEDs
  */
 static uint32_t imxrt_ba_putdata_xmd(t_monitor_if* pInterface, void const* data, uint32_t length)
 {
@@ -213,7 +213,7 @@ static uint32_t imxrt_ba_putdata_xmd(t_monitor_if* pInterface, void const* data,
 }
 
 /*
- * Central IMXRT_BA monitor getdata function using the board LEDs
+ * Central IMRXT_BA monitor getdata function using the board LEDs
  */
 static uint32_t imxrt_ba_getdata_xmd(t_monitor_if* pInterface, void* data, uint32_t length)
 {
@@ -314,7 +314,7 @@ static void imxrt_ba_monitor_loop(void)
 {
   length = imxrt_ba_getdata(ptr_monitor_if, data, 512);
   ptr = data;
-	#if _DEBUG_
+	#ifdef _DEBUG_
 	if(length != 0){
 		usb_echo("rec:");
 		for(int i = 0; i < length; i++){
@@ -446,7 +446,7 @@ static void imxrt_ba_monitor_loop(void)
         // Note: the flash memory is erased in ROWS, that is in block of 4 pages.
         //       Even if the starting address is the last byte of a ROW the entire
         //       ROW is erased anyway.
-				#if _DEBUG_
+				#ifdef _DEBUG_
 				usb_echo("%X \r\n", current_number);
 				#endif
        
@@ -461,7 +461,7 @@ static void imxrt_ba_monitor_loop(void)
         // Syntax: Y[ROM_ADDR],[SIZE]#
         // Write the first SIZE bytes from the SRAM buffer (previously set) into
         // flash memory starting from address ROM_ADDR
-				#if _DEBUG_
+				#ifdef _DEBUG_
         usb_echo("%X \r\n", current_number);
 				#endif
 				break;
@@ -564,18 +564,21 @@ void imxrt_ba_monitor_sys_tick(void)
 }
 
 /**
- * \brief This function starts the IMXRT_BA monitor.
+ * \brief This function starts the IMRXT_BA monitor.
  */
 void imxrt_ba_monitor_run(void)
 {
 
   ptr_data = NULL;
   command = 'z';
-	LED_on();
+	LED_init();
+	LEDRX_init();
+	LEDTX_init();
   while (1)
   {
    imxrt_ba_monitor_loop();
   }
+
 
 }
 
