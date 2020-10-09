@@ -421,34 +421,34 @@
               <FilePath>..\user\flexspi_hyper_flash_ops.h</FilePath>
             </File>
             <File>
-              <FileName>imrxt_ba_cdc.c</FileName>
+              <FileName>imxrt_ba_cdc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user\imrxt_ba_cdc.c</FilePath>
+              <FilePath>..\user\imxrt_ba_cdc.c</FilePath>
             </File>
             <File>
-              <FileName>imrxt_ba_cdc.h</FileName>
+              <FileName>imxrt_ba_cdc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\user\imrxt_ba_cdc.h</FilePath>
+              <FilePath>..\user\imxrt_ba_cdc.h</FilePath>
             </File>
             <File>
-              <FileName>imrxt_ba_flash.c</FileName>
+              <FileName>imxrt_ba_flash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user\imrxt_ba_flash.c</FilePath>
+              <FilePath>..\user\imxrt_ba_flash.c</FilePath>
             </File>
             <File>
-              <FileName>imrxt_ba_flash.h</FileName>
+              <FileName>imxrt_ba_flash.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\user\imrxt_ba_flash.h</FilePath>
+              <FilePath>..\user\imxrt_ba_flash.h</FilePath>
             </File>
             <File>
-              <FileName>imrxt_ba_monitor.c</FileName>
+              <FileName>imxrt_ba_monitor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\user\imrxt_ba_monitor.c</FilePath>
+              <FilePath>..\user\imxrt_ba_monitor.c</FilePath>
             </File>
             <File>
-              <FileName>imrxt_ba_monitor.h</FileName>
+              <FileName>imxrt_ba_monitor.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\user\imrxt_ba_monitor.h</FilePath>
+              <FilePath>..\user\imxrt_ba_monitor.h</FilePath>
             </File>
           </Files>
         </Group>

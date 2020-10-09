@@ -43,14 +43,14 @@
  */
 
 #include <string.h>
-#include "imrxt_ba_monitor.h"
-#include "imrxt_ba_cdc.h"
-#include "imrxt_ba_flash.h"
+#include "imxrt_ba_monitor.h"
+#include "imxrt_ba_cdc.h"
+#include "imxrt_ba_flash.h"
 #include "board_drive_led.h"
 #include "app.h"
 #include <stdlib.h>
 
-const char RomBOOT_Version[] = IMRXT_BA_VERSION;
+const char RomBOOT_Version[] = IMXRT_BA_VERSION;
 const char RomBOOT_ExtendedCapabilities[] = "[Arduino:Z]";
 
 /* Provides one common interface to handle both USART and USB-CDC */
@@ -72,7 +72,7 @@ typedef struct
   uint32_t (*getdata_xmd)(void* data, uint32_t length);
 } t_monitor_if;
 
-#if defined(IMRXT_BA_USBCDC_ONLY)  ||  defined(IMRXT_BA_BOTH_INTERFACES)
+#if defined(IMXRT_BA_USBCDC_ONLY)  ||  defined(IMXRT_BA_BOTH_INTERFACES)
 //Please note that USB doesn't use Xmodem protocol, since USB already includes flow control and data verification
 //Data are simply forwarded without further coding.
 const t_monitor_if usbcdc_if =
@@ -138,7 +138,7 @@ t_monitor_if * ptr_monitor_if;
 
 /* b_terminal_mode mode (ascii) or hex mode */
 volatile bool b_terminal_mode = false;
-volatile bool b_imrxt_ba_interface_usart = false;
+volatile bool b_imxrt_ba_interface_usart = false;
 
 /* Pulse generation counters to keep track of the time remaining for each pulse type */
 #define TX_RX_LED_PULSE_PERIOD 100
@@ -146,18 +146,18 @@ volatile uint16_t txLEDPulse = 0; // time remaining for Tx LED pulse
 volatile uint16_t rxLEDPulse = 0; // time remaining for Rx LED pulse
 
 
-void imrxt_ba_monitor_init(uint8_t com_interface)
+void imxrt_ba_monitor_init(uint8_t com_interface)
 {
-  if (com_interface == IMRXT_BA_INTERFACE_USBCDC)
+  if (com_interface == IMXRT_BA_INTERFACE_USBCDC)
   {
     ptr_monitor_if = (t_monitor_if*) &usbcdc_if;
   }
 }
 
 /*
- * Central IMRXT_BA monitor putdata function using the board LEDs
+ * Central IMXRT_BA monitor putdata function using the board LEDs
  */
-static uint32_t imrxt_ba_putdata(t_monitor_if* pInterface, void const* data, uint32_t length)
+static uint32_t imxrt_ba_putdata(t_monitor_if* pInterface, void const* data, uint32_t length)
 {
 	uint32_t result ;
 
@@ -178,9 +178,9 @@ static uint32_t imrxt_ba_putdata(t_monitor_if* pInterface, void const* data, uin
 }
 
 /*
- * Central IMRXT_BA monitor getdata function using the board LEDs
+ * Central IMXRT_BA monitor getdata function using the board LEDs
  */
-static uint32_t imrxt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t length)
+static uint32_t imxrt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t length)
 {
 	uint32_t result ;
 
@@ -197,9 +197,9 @@ static uint32_t imrxt_ba_getdata(t_monitor_if* pInterface, void* data, uint32_t 
 }
 
 /*
- * Central IMRXT_BA monitor putdata function using the board LEDs
+ * Central IMXRT_BA monitor putdata function using the board LEDs
  */
-static uint32_t imrxt_ba_putdata_xmd(t_monitor_if* pInterface, void const* data, uint32_t length)
+static uint32_t imxrt_ba_putdata_xmd(t_monitor_if* pInterface, void const* data, uint32_t length)
 {
 	uint32_t result ;
 
@@ -213,9 +213,9 @@ static uint32_t imrxt_ba_putdata_xmd(t_monitor_if* pInterface, void const* data,
 }
 
 /*
- * Central IMRXT_BA monitor getdata function using the board LEDs
+ * Central IMXRT_BA monitor getdata function using the board LEDs
  */
-static uint32_t imrxt_ba_getdata_xmd(t_monitor_if* pInterface, void* data, uint32_t length)
+static uint32_t imxrt_ba_getdata_xmd(t_monitor_if* pInterface, void* data, uint32_t length)
 {
 	uint32_t result ;
 
@@ -237,7 +237,7 @@ static uint32_t imrxt_ba_getdata_xmd(t_monitor_if* pInterface, void* data, uint3
  * \param *data  Data pointer
  * \param length Length of the data
  */
-void imrxt_ba_putdata_term(uint8_t* data, uint32_t length)
+void imxrt_ba_putdata_term(uint8_t* data, uint32_t length)
 {
   uint8_t temp, buf[12], *data_ascii;
   uint32_t i, int_value;
@@ -270,10 +270,10 @@ void imrxt_ba_putdata_term(uint8_t* data, uint32_t length)
     buf[1] = 'x';
     buf[length * 2 + 2] = '\n';
     buf[length * 2 + 3] = '\r';
-    imrxt_ba_putdata(ptr_monitor_if, buf, length * 2 + 4);
+    imxrt_ba_putdata(ptr_monitor_if, buf, length * 2 + 4);
   }
   else
-    imrxt_ba_putdata(ptr_monitor_if, data, length);
+    imxrt_ba_putdata(ptr_monitor_if, data, length);
   return;
 }
 
@@ -307,12 +307,12 @@ static void put_uint32(uint32_t n)
 
     buff[7-i] = d > 9 ? 'A' + d - 10 : '0' + d;
   }
-  imrxt_ba_putdata( ptr_monitor_if, buff, 8);
+  imxrt_ba_putdata( ptr_monitor_if, buff, 8);
 }
 
-static void imrxt_ba_monitor_loop(void)
+static void imxrt_ba_monitor_loop(void)
 {
-  length = imrxt_ba_getdata(ptr_monitor_if, data, 512);
+  length = imxrt_ba_getdata(ptr_monitor_if, data, 512);
   ptr = data;
 	#if _DEBUG_
 	if(length != 0){
@@ -332,7 +332,7 @@ static void imrxt_ba_monitor_loop(void)
     {
       if (b_terminal_mode)
       {
-        imrxt_ba_putdata(ptr_monitor_if, "\n\r", 2);
+        imxrt_ba_putdata(ptr_monitor_if, "\n\r", 2);
       }
       if (command == 'S')
       {
@@ -366,13 +366,13 @@ static void imrxt_ba_monitor_loop(void)
 				flash_size = current_number - j;
 			
         if(j<current_number)
-          imrxt_ba_getdata_xmd(ptr_monitor_if, ptr_data, current_number-j);
+          imxrt_ba_getdata_xmd(ptr_monitor_if, ptr_data, current_number-j);
 				
         break;
       }
       else if (command == 'R')
       {
-        imrxt_ba_putdata_xmd(ptr_monitor_if, ptr_data, current_number);
+        imxrt_ba_putdata_xmd(ptr_monitor_if, ptr_data, current_number);
       }
       else if (command == 'O')
       {
@@ -381,7 +381,7 @@ static void imrxt_ba_monitor_loop(void)
       else if (command == 'H')
       {
         *((uint16_t *) ptr_data) = (uint16_t) current_number;
-				imrxt_ba_putdata_term((uint8_t*) &current_number, 2);
+				imxrt_ba_putdata_term((uint8_t*) &current_number, 2);
       }
       else if (command == 'W')
       {
@@ -389,17 +389,17 @@ static void imrxt_ba_monitor_loop(void)
       }
       else if (command == 'o')
       {
-        imrxt_ba_putdata_term(ptr_data, 1);
+        imxrt_ba_putdata_term(ptr_data, 1);
       }
       else if (command == 'h')
       {
         current_number = *((uint16_t *) ptr_data);
-        imrxt_ba_putdata_term((uint8_t*) &current_number, 2);
+        imxrt_ba_putdata_term((uint8_t*) &current_number, 2);
       }
       else if (command == 'w')
       {
         current_number = *((uint32_t *) ptr_data);
-        imrxt_ba_putdata_term((uint8_t*) &current_number, 4);
+        imxrt_ba_putdata_term((uint8_t*) &current_number, 4);
       }
       else if (command == 'G')
       {
@@ -408,35 +408,35 @@ static void imrxt_ba_monitor_loop(void)
       else if (command == 'T')
       {
         b_terminal_mode = 1;
-        imrxt_ba_putdata(ptr_monitor_if, "\n\r", 2);
+        imxrt_ba_putdata(ptr_monitor_if, "\n\r", 2);
       }
       else if (command == 'N')
       {
         if (b_terminal_mode == 0)
         {
-          imrxt_ba_putdata( ptr_monitor_if, "\n\r", 2);
+          imxrt_ba_putdata( ptr_monitor_if, "\n\r", 2);
         }
         b_terminal_mode = 0;
       }
       else if (command == 'V')
       {
-        imrxt_ba_putdata( ptr_monitor_if, "v", 1);
-        imrxt_ba_putdata( ptr_monitor_if, (uint8_t *) RomBOOT_Version, strlen(RomBOOT_Version));
-        imrxt_ba_putdata( ptr_monitor_if, " ", 1);
-        imrxt_ba_putdata( ptr_monitor_if, (uint8_t *) RomBOOT_ExtendedCapabilities, strlen(RomBOOT_ExtendedCapabilities));
-        imrxt_ba_putdata( ptr_monitor_if, " ", 1);
+        imxrt_ba_putdata( ptr_monitor_if, "v", 1);
+        imxrt_ba_putdata( ptr_monitor_if, (uint8_t *) RomBOOT_Version, strlen(RomBOOT_Version));
+        imxrt_ba_putdata( ptr_monitor_if, " ", 1);
+        imxrt_ba_putdata( ptr_monitor_if, (uint8_t *) RomBOOT_ExtendedCapabilities, strlen(RomBOOT_ExtendedCapabilities));
+        imxrt_ba_putdata( ptr_monitor_if, " ", 1);
         ptr = (uint8_t*) &(__DATE__);
         i = 0;
         while (*ptr++ != '\0')
           i++;
-        imrxt_ba_putdata( ptr_monitor_if, (uint8_t *) &(__DATE__), i);
-        imrxt_ba_putdata( ptr_monitor_if, " ", 1);
+        imxrt_ba_putdata( ptr_monitor_if, (uint8_t *) &(__DATE__), i);
+        imxrt_ba_putdata( ptr_monitor_if, " ", 1);
         i = 0;
         ptr = (uint8_t*) &(__TIME__);
         while (*ptr++ != '\0')
           i++;
-        imrxt_ba_putdata( ptr_monitor_if, (uint8_t *) &(__TIME__), i);
-        imrxt_ba_putdata( ptr_monitor_if, "\n\r", 2);
+        imxrt_ba_putdata( ptr_monitor_if, (uint8_t *) &(__TIME__), i);
+        imxrt_ba_putdata( ptr_monitor_if, "\n\r", 2);
       }
       else if (command == 'X')
       {
@@ -485,11 +485,11 @@ static void imrxt_ba_monitor_loop(void)
 				status_t status = flash_program_buffer((uint32_t)dst+APP_START_ADDRESS, (void *)ptrt, flash_size);
 			  if(kStatus_Success != status)
 	      {
-			    imrxt_ba_putdata( ptr_monitor_if, "y\n\r", 3);
+			    imxrt_ba_putdata( ptr_monitor_if, "y\n\r", 3);
 					break;
 	      }
 			
-				imrxt_ba_putdata( ptr_monitor_if, "Y\n\r", 3);
+				imxrt_ba_putdata( ptr_monitor_if, "Y\n\r", 3);
 				
 				break;
         // Set automatic page write
@@ -513,9 +513,9 @@ static void imrxt_ba_monitor_loop(void)
           crc = serial_add_crc(*data++, crc);
 
         // Send response
-        imrxt_ba_putdata( ptr_monitor_if, "Z", 1);
+        imxrt_ba_putdata( ptr_monitor_if, "Z", 1);
         put_uint32(crc);
-        imrxt_ba_putdata( ptr_monitor_if, "#\n\r", 3);
+        imxrt_ba_putdata( ptr_monitor_if, "#\n\r", 3);
       }
 
       command = 'z';
@@ -523,7 +523,7 @@ static void imrxt_ba_monitor_loop(void)
 
       if (b_terminal_mode)
       {
-        imrxt_ba_putdata( ptr_monitor_if, ">", 1);
+        imxrt_ba_putdata( ptr_monitor_if, ">", 1);
       }
     }
     else
@@ -554,7 +554,7 @@ static void imrxt_ba_monitor_loop(void)
   }
 }
 
-void imrxt_ba_monitor_sys_tick(void)
+void imxrt_ba_monitor_sys_tick(void)
 {
 	/* Check whether the TX or RX LED one-shot period has elapsed.  if so, turn off the LED */
 	if (txLEDPulse && !(--txLEDPulse))
@@ -564,9 +564,9 @@ void imrxt_ba_monitor_sys_tick(void)
 }
 
 /**
- * \brief This function starts the IMRXT_BA monitor.
+ * \brief This function starts the IMXRT_BA monitor.
  */
-void imrxt_ba_monitor_run(void)
+void imxrt_ba_monitor_run(void)
 {
 
   ptr_data = NULL;
@@ -574,7 +574,7 @@ void imrxt_ba_monitor_run(void)
 	LED_on();
   while (1)
   {
-   imrxt_ba_monitor_loop();
+   imxrt_ba_monitor_loop();
   }
 
 }

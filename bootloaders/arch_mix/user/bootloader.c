@@ -14,7 +14,7 @@
 #include "clock_config.h"
 #include "fsl_common.h"
 #include "virtual_com.h"
-#include "imrxt_ba_monitor.h"
+#include "imxrt_ba_monitor.h"
 #include "board_drive_led.h"
 /*******************************************************************************
  * Definitions
@@ -136,10 +136,10 @@ int main(void)
 
 	  vcom_cdc_init();
 	   
-	  imrxt_ba_monitor_init(IMRXT_BA_INTERFACE_USBCDC);
+	  imxrt_ba_monitor_init(IMXRT_BA_INTERFACE_USBCDC);
   
     while (1)
     {
-			imrxt_ba_monitor_run();
+			imxrt_ba_monitor_run();
     }
 }

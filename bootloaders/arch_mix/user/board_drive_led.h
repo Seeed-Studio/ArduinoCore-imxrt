@@ -24,12 +24,12 @@
 #include "fsl_gpio.h"
 #include "fsl_iomuxc.h"
 
-#define IMRXT_BA_LED_GPIO  GPIO1
-#define IMRXT_BA_LED_GPIO_PIN (9U)
-#define IMRXT_BA_LEDRX_GPIO  GPIO1
-#define IMRXT_BA_LEDRX_GPIO_PIN (10U)
-#define IMRXT_BA_LEDTX_GPIO  GPIO1
-#define IMRXT_BA_LEDTX_GPIO_PIN (11U)
+#define IMXRT_BA_LED_GPIO  GPIO1
+#define IMXRT_BA_LED_GPIO_PIN (9U)
+#define IMXRT_BA_LEDRX_GPIO  GPIO1
+#define IMXRT_BA_LEDRX_GPIO_PIN (10U)
+#define IMXRT_BA_LEDTX_GPIO  GPIO1
+#define IMXRT_BA_LEDTX_GPIO_PIN (11U)
 
 
 

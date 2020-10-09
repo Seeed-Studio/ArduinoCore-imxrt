@@ -15,10 +15,10 @@ void LED_init(void)
                                                  Pull Up / Down Config. Field: 100K Ohm Pull Down
                                                  Hyst. Enable Field: Hysteresis Disabled */
 	gpio_pin_config_t led_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
-	GPIO_PinInit(IMRXT_BA_LED_GPIO, IMRXT_BA_LED_GPIO_PIN, &led_config);
+	GPIO_PinInit(IMXRT_BA_LED_GPIO, IMXRT_BA_LED_GPIO_PIN, &led_config);
 }
-void LED_on(void) {GPIO_PinWrite(IMRXT_BA_LED_GPIO, IMRXT_BA_LED_GPIO_PIN, 0U); }
-void LED_off(void) { GPIO_PinWrite(IMRXT_BA_LED_GPIO, IMRXT_BA_LED_GPIO_PIN, 1U);}
+void LED_on(void) {GPIO_PinWrite(IMXRT_BA_LED_GPIO, IMXRT_BA_LED_GPIO_PIN, 0U); }
+void LED_off(void) { GPIO_PinWrite(IMXRT_BA_LED_GPIO, IMXRT_BA_LED_GPIO_PIN, 1U);}
 void LED_toggle(void) { }
 
 
@@ -38,10 +38,10 @@ void LEDRX_init(void)
                                                  Pull Up / Down Config. Field: 100K Ohm Pull Down
                                                  Hyst. Enable Field: Hysteresis Disabled */
 	gpio_pin_config_t led_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
-	GPIO_PinInit(IMRXT_BA_LEDRX_GPIO, IMRXT_BA_LEDRX_GPIO_PIN, &led_config); 
+	GPIO_PinInit(IMXRT_BA_LEDRX_GPIO, IMXRT_BA_LEDRX_GPIO_PIN, &led_config); 
 }
-void LEDRX_on(void) { GPIO_PinWrite(IMRXT_BA_LEDRX_GPIO, IMRXT_BA_LEDRX_GPIO_PIN, 0U); }
-void LEDRX_off(void) { GPIO_PinWrite(IMRXT_BA_LEDRX_GPIO, IMRXT_BA_LEDRX_GPIO_PIN, 1U); }
+void LEDRX_on(void) { GPIO_PinWrite(IMXRT_BA_LEDRX_GPIO, IMXRT_BA_LEDRX_GPIO_PIN, 0U); }
+void LEDRX_off(void) { GPIO_PinWrite(IMXRT_BA_LEDRX_GPIO, IMXRT_BA_LEDRX_GPIO_PIN, 1U); }
 void LEDRX_toggle(void) { }
 
 
@@ -62,8 +62,8 @@ void LEDTX_init(void)
                                                  Pull Up / Down Config. Field: 100K Ohm Pull Down
                                                  Hyst. Enable Field: Hysteresis Disabled */
 	gpio_pin_config_t led_config = {kGPIO_DigitalOutput, 0, kGPIO_NoIntmode};
-	GPIO_PinInit(IMRXT_BA_LEDTX_GPIO, IMRXT_BA_LEDTX_GPIO_PIN, &led_config);
+	GPIO_PinInit(IMXRT_BA_LEDTX_GPIO, IMXRT_BA_LEDTX_GPIO_PIN, &led_config);
 }
-void LEDTX_on(void) { GPIO_PinWrite(IMRXT_BA_LEDTX_GPIO, IMRXT_BA_LEDTX_GPIO_PIN, 0U); }
-void LEDTX_off(void) { GPIO_PinWrite(IMRXT_BA_LEDTX_GPIO, IMRXT_BA_LEDTX_GPIO_PIN, 1U);}
+void LEDTX_on(void) { GPIO_PinWrite(IMXRT_BA_LEDTX_GPIO, IMXRT_BA_LEDTX_GPIO_PIN, 0U); }
+void LEDTX_off(void) { GPIO_PinWrite(IMXRT_BA_LEDTX_GPIO, IMXRT_BA_LEDTX_GPIO_PIN, 1U);}
 void LEDTX_toggle(void) { }

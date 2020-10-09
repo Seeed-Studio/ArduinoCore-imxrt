@@ -22,7 +22,7 @@
 # THE SOFTWARE.
 
 
-# Seeed IMRXT Core and platform
+# Seeed IMXRT Core and platform
 # For more info:
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.6.x-package_index.json-format-specification

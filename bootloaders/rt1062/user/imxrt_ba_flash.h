@@ -24,12 +24,12 @@
  * THE SOFTWARE.
  */
  
- #ifndef _IMRXT_UF2_FLASH_H
- #define _IMRXT_UF2_FLASH_H
+ #ifndef _IMXRT_UF2_FLASH_H
+ #define _IMXRT_UF2_FLASH_H
  
  status_t flash_erase(uint32_t address, uint32_t length);
  status_t flash_program(uint32_t address, void * data);
  status_t flash_program_buffer(uint32_t address, void * data, uint32_t length);
  uint32_t flash_read(uint32_t address, void * data,const uint32_t length);
  
- #endif /*IMRXT_UF2_FLASH_H*/
+ #endif /*IMXRT_UF2_FLASH_H*/

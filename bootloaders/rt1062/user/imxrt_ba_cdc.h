@@ -16,6 +16,7 @@
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
 /**
  * The MIT License (MIT)
  * 
@@ -42,55 +43,62 @@
  * THE SOFTWARE.
  */
 
-#ifndef _MONITOR_IMRXT_BA_H_
-#define _MONITOR_IMRXT_BA_H_
+#ifndef _IMXRT_BA_USB_CDC_H_
+#define _IMXRT_BA_USB_CDC_H_
 
-#define IMRXT_BA_VERSION              "1.0"
-
-
-#include <stdio.h>
 #include <stdint.h>
+#include <stdbool.h>
+#include "virtual_com.h"
 
-#if !defined(IMRXT_BA_BOTH_INTERFACES) &&  !defined(IMRXT_BA_UART_ONLY) && !defined(IMRXT_BA_USBCDC_ONLY)
-#define IMRXT_BA_BOTH_INTERFACES
-#endif
-
-/* Selects USB as the communication interface of the monitor */
-#define IMRXT_BA_INTERFACE_USBCDC     0
-/* Selects USART as the communication interface of the monitor */
-#define IMRXT_BA_INTERFACE_USART      1
-
-/* Selects USB as the communication interface of the monitor */
-#define SIZEBUFMAX                  64
+extern usb_cdc_vcom_struct_t s_cdcVcom;	
 
 /**
- * \brief Initialize the monitor
+ * \brief Sends a single byte through USB CDC
  *
+ * \param Data to send
+ * \return number of data sent
  */
-void imrxt_ba_monitor_init(uint8_t com_interface);
+int cdc_putc(int value);
 
 /**
- * \brief System tick function of the IMRXT_BA Monitor
+ * \brief Reads a single byte through USB CDC
  *
+ * \return Data read through USB
  */
-void imrxt_ba_monitor_sys_tick(void);
+int cdc_getc(void);
 
 /**
- * \brief Main function of the IMRXT_BA Monitor
+ * \brief Checks if a character has been received on USB CDC
  *
+ * \return \c 1 if a byte is ready to be read.
  */
-void imrxt_ba_monitor_run(void);
+bool cdc_is_rx_ready(void);
 
 /**
- * \brief
+ * \brief Sends buffer on USB CDC
  *
+ * \param data pointer
+ * \param number of data to send
+ * \return number of data sent
  */
-void imrxt_ba_putdata_term(uint8_t* data, uint32_t length);
+uint32_t cdc_write_buf(void const* data, uint32_t length);
 
 /**
- * \brief
+ * \brief Gets data on USB CDC
  *
+ * \param data pointer
+ * \param number of data to read
+ * \return number of data read
  */
-void call_applet(uint32_t address);
+uint32_t cdc_read_buf(void* data, uint32_t length);
 
-#endif // _MONITOR_IMRXT_BA_H_
+/**
+ * \brief Gets specified number of bytes on USB CDC
+ *
+ * \param data pointer
+ * \param number of data to read
+ * \return number of data read
+ */
+uint32_t cdc_read_buf_xmd(void* data, uint32_t length);
+
+#endif // _IMXRT_BA_USB_CDC_H_
