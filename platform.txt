@@ -78,6 +78,7 @@ build.flags.maxspi=
 build.flags.maxqspi=
 build.flags.usbstack=
 build.flags.debug=
+build.flags.flash=
 
 # These can be overridden in platform.local.txt
 compiler.c.extra_flags=
