@@ -571,9 +571,7 @@ void imxrt_ba_monitor_run(void)
 
   ptr_data = NULL;
   command = 'z';
-	LED_init();
-	LEDRX_init();
-	LEDTX_init();
+	
   while (1)
   {
    imxrt_ba_monitor_loop();

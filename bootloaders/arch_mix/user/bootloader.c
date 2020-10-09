@@ -15,6 +15,7 @@
 #include "fsl_common.h"
 #include "virtual_com.h"
 #include "imxrt_ba_monitor.h"
+#include "board_drive_led.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -116,10 +117,20 @@ int main(void)
     BOARD_InitDebugConsole();
     SCB_DisableDCache();
 	  flexspi_nor_flash_init(BOOTLOADER_FLEXSPI);
-	 // flexspi_nor_enable_quad_mode(BOOTLOADER_FLEXSPI);
+	  // flexspi_nor_enable_quad_mode(BOOTLOADER_FLEXSPI);
+    LED_init();
+	  LEDRX_init();
+	  LEDTX_init();
+	  LED_off();
+	  LEDRX_off();
+	  LEDTX_off();
 	 
 	  check_application();
-
+	
+		LED_on();
+	  LEDRX_on();
+	  LEDTX_on();
+//
 	  vcom_cdc_init();
 	   
 	  imxrt_ba_monitor_init(IMRXT_BA_INTERFACE_USBCDC);
