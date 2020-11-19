@@ -83,30 +83,30 @@ void call_application(uint32_t address)
 
 void check_application()
 {
-	
-	 if(BOOT_STATUS_MAGIC == BOOT_STATUS_DATA)
+	/* Check if bootloader data area (in Flash at 0xF000) contains the bootloader info structure */
+	 if(BOOT_STATUS_MAGIC != BOOT_STATUS_DATA)
 	 {
-		 writeStatus(0x00);
+			writeStatus(BOOT_STATUS_MAGIC);
+		 LED_on();
+  	 for(uint32_t i = 0; i < 4096; i++)
+			 for(uint32_t j = 0; j < 102400; j++);
+		 LED_off();
+	 }
+
+	 if (GPIO_PinRead(BOARD_USER_BUTTON_GPIO, BOARD_USER_BUTTON_GPIO_PIN)) {
+			// user button NOT pressed, continue to application
+			//usb_echo("APP MODE\r\n");
+			LED_off();
+			LEDTX_off();
+			LEDRX_off(); // app will run, turn off al LEDs
+			call_application(APP_START_ADDRESS);
+	 }
+	 else {
+		 // user button pressed, stay in bootloader mode
+		 LEDTX_on(); // blue, bootloader mode
 		 //usb_echo("BOOTLOADER MODE\r\n");
 		 return;
-	 }else{
-		 writeStatus(BOOT_STATUS_MAGIC);
-		 //usb_echo("APP MODE\r\n");
-		 call_application(APP_START_ADDRESS);
 	 }
-	 
-	 
-
-	 /*writeStatus(BOOT_STATUS_MAGIC);
-	 PRINTF("IS Mw !\r\n");
-	 for(uint32_t i = 0; i < 4096; i++)
-		 for(uint32_t j = 0; j < 102400; j++);
-	 
-	PRINTF("IS Masd !\r\n");
-	writeStatus(0x00);
-	 
-	call_application(APP_START_ADDRESS);*/
-	
 }
 
 int main(void)
@@ -121,16 +121,16 @@ int main(void)
     LED_init();
 	  LEDRX_init();
 	  LEDTX_init();
-	  LED_off();
-	  LEDRX_off();
-	  LEDTX_off();
+		LED_off();
+		LEDRX_off();
+		LEDTX_off();
+
+		// Init user button
+		gpio_pin_config_t button_config = {kGPIO_DigitalInput, 0, kGPIO_NoIntmode};
+  	GPIO_PinInit(BOARD_USER_BUTTON_GPIO, BOARD_USER_BUTTON_GPIO_PIN, &button_config);
 	 
 	  check_application();
 	
-		LED_on();
-	  LEDRX_on();
-	  LEDTX_on();
-//
 	  vcom_cdc_init();
 	   
 	  imxrt_ba_monitor_init(IMRXT_BA_INTERFACE_USBCDC);
