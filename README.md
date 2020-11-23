@@ -2,6 +2,9 @@
 
 This repository contains the Arduino BSP for Seeed i.MX RT Series:
 - [Arch Mix](https://www.seeedstudio.com/Arch-Mix-p-2901.html)
+## How to load the bootloader
+   FYI [here](https://wiki.seeedstudio.com/Arch_Mix/#flashing-arduino-bootloader-to-arch-mix)
+
 ## Add the imxrt-based board to the Arduino IDE
 
 ### Step 1. Download the latest Arduino IDE
